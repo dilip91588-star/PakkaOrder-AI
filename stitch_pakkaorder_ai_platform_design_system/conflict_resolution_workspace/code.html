@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PakkaOrder AI — Conflict Resolution Workspace</title>
+<!-- Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#006a63",
+            "surface-container": "#e5eeff",
+            "outline": "#6e7977",
+            "surface-container-highest": "#d3e4fe",
+            "error-container": "#ffdad6",
+            "on-surface": "#0b1c30",
+            "on-error": "#ffffff",
+            "on-primary-container": "#a3faef",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "tertiary-container": "#467169",
+            "on-tertiary-fixed": "#00201c",
+            "primary-container": "#0f766e",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#00201e",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#bdece2",
+            "inverse-primary": "#80d5cb",
+            "on-tertiary-container": "#c5f3ea",
+            "tertiary": "#2d5951",
+            "surface-container-low": "#eff4ff",
+            "on-tertiary-fixed-variant": "#224e47",
+            "surface": "#f8f9ff",
+            "on-secondary-fixed-variant": "#00504b",
+            "outline-variant": "#bdc9c6",
+            "secondary-container": "#a8ece5",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#3e4947",
+            "primary": "#005c55",
+            "on-primary-fixed": "#00201d",
+            "on-primary-fixed-variant": "#00504a",
+            "secondary": "#216963",
+            "primary-fixed": "#9cf2e8",
+            "surface-bright": "#f8f9ff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#8fd3cc",
+            "surface-container-high": "#dce9ff",
+            "surface-variant": "#d3e4fe",
+            "on-secondary-container": "#266d68",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#abefe8",
+            "primary-fixed-dim": "#80d5cb",
+            "on-background": "#0b1c30",
+            "inverse-surface": "#213145",
+            "background": "#f8f9ff",
+            "tertiary-fixed-dim": "#a2d0c6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin-desktop": "2rem",
+            "space-xl": "1.5rem",
+            "space-xxs": "0.125rem",
+            "gutter-desktop": "1.5rem",
+            "margin": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-md": "0.75rem",
+            "space-2xl": "2rem",
+            "space-lg": "1rem",
+            "space-3xl": "3rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "mono-data-sm": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-xl": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "mono-data-md": ["JetBrains Mono"],
+            "mono-data-lg": ["JetBrains Mono"],
+            "headline-xl-mobile": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "mono-data-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "mono-data-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "mono-data-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #bdc9c6;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full overflow-hidden bg-background text-on-surface antialiased flex flex-col font-body-md text-body-md select-none">
+<!-- TOP ENTERPRISE HEADER (SHARED COMPONENT) -->
+<header class="sticky top-0 z-30 flex items-center justify-between w-full h-14 px-space-xl bg-surface-container-lowest border-b border-outline-variant/40 shrink-0">
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary tracking-tight">PakkaOrder AI</span>
+</div>
+<div class="h-4 w-px bg-outline-variant/50"></div>
+<!-- Quick Channels -->
+<nav class="hidden md:flex items-center gap-space-md text-label-md font-label-md">
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">All Outlets</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Swiggy</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Zomato</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">WhatsApp POS</a>
+</nav>
+</div>
+<!-- Right Header Tools -->
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-low rounded border border-outline-variant/40 text-label-sm font-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-mono-data-sm text-mono-data-sm text-on-surface">ENGINE ONLINE</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Terminal Stream">
+<span class="material-symbols-outlined" data-icon="wifi_tethering">wifi_tethering</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Settlements">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+</div>
+<div class="h-4 w-px bg-outline-variant/50"></div>
+<button class="px-space-md py-1.5 bg-surface-container-lowest border border-outline-variant/40 hover:bg-surface-container-low text-on-surface text-label-md font-label-md rounded flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Export Audit</span>
+</button>
+<button class="px-space-md py-1.5 bg-primary-container hover:bg-primary text-on-primary text-label-md font-label-md rounded flex items-center gap-1.5 transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span>Force Resync</span>
+</button>
+<div class="w-8 h-8 rounded-full border border-outline-variant/40 bg-surface-container flex items-center justify-center font-mono-data-sm text-mono-data-sm text-primary font-semibold" title="Lead Financial Auditor Profile">
+        FA
+      </div>
+</div>
+</header>
+<!-- BODY CONTENT AREA: SIDEBAR + MAIN WORKSPACE -->
+<div class="flex-1 flex overflow-hidden">
+<!-- SIDEBAR (SHARED COMPONENT) -->
+<aside class="w-64 bg-surface-container-lowest border-r border-outline-variant/40 flex flex-col justify-between shrink-0 p-space-md">
+<div class="flex flex-col gap-space-md">
+<!-- Outlet Info -->
+<div class="px-space-sm py-space-xs">
+<div class="text-label-sm font-label-sm uppercase tracking-wider text-outline">OUTLET HUB</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">PakkaOrder AI</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant truncate">Connaught Place Central • Hub #04</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="text-label-md font-label-md">Reconciliation</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-md font-label-md">Omnichannel Live</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-label-md font-label-md">Channel Audits</span>
+</a>
+<!-- Active Tab: Discrepancies (This workspace screen) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-surface-container-low text-primary font-semibold rounded border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="rule">rule</span>
+<span class="text-label-md font-label-md">Discrepancies</span>
+<span class="ml-auto font-mono-data-sm text-mono-data-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-medium">14</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<!-- Hub Health Metric Tile -->
+<div class="mt-space-sm p-space-sm bg-surface-container-low rounded border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Sync Health</span>
+<span class="font-mono-data-sm text-mono-data-sm text-primary font-semibold">99.4%</span>
+</div>
+<div class="w-full bg-outline-variant/40 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[99.4%]"></div>
+</div>
+<div class="text-[10px] text-outline">POS Ingest: 42ms • Aggregator API: 110ms</div>
+</div>
+</div>
+<!-- Footer Rail -->
+<div class="flex flex-col gap-space-xs pt-space-md border-t border-outline-variant/40">
+<button class="w-full py-2 px-space-sm bg-primary-container text-on-primary rounded text-label-md font-label-md flex items-center justify-center gap-1.5 hover:bg-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+<span>Resolve Batch (14)</span>
+</button>
+<div class="flex items-center justify-between mt-1 px-1">
+<a class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[15px]" data-icon="history">history</span>
+<span>Audit Trail</span>
+</a>
+<a class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-[15px]" data-icon="dns">dns</span>
+<span>Terminal Status</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- MAIN CONFLICT RESOLUTION WORKBENCH CANVAS -->
+<main class="flex-1 flex flex-col overflow-y-auto custom-scroll bg-surface">
+<!-- 1. BREADCRUMBS & CONFLICT META HEADER -->
+<div class="sticky top-0 z-20 px-space-2xl py-space-md bg-surface-container-lowest border-b border-outline-variant/40 flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-wrap">
+<a class="px-space-sm py-1 bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low text-on-surface text-label-md font-label-md rounded flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_back">arrow_back</span>
+<span>Back to Queue</span>
+</a>
+<div class="h-4 w-px bg-outline-variant/40"></div>
+<!-- Breadcrumb Path -->
+<div class="flex items-center gap-1.5 text-label-md font-label-md">
+<span class="text-on-surface-variant">Review Queue</span>
+<span class="text-outline">/</span>
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">CONFLICT-89241</span>
+</div>
+<!-- Severity Badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-error-container text-on-error-container text-label-sm font-label-sm font-semibold border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            Critical Quantity Mismatch
+          </span>
+<!-- Similarity Score -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-surface-container-low text-tertiary text-label-sm font-label-sm border border-outline-variant/40" title="High entity similarity detected across customer payload">
+<span class="material-symbols-outlined text-[14px] text-tertiary" data-icon="hub">hub</span>
+<span class="font-mono-data-sm text-mono-data-sm font-semibold">94%</span> Candidate Match (Pending Approval)
+          </span>
+</div>
+<!-- Pagination Controls -->
+<div class="flex items-center gap-space-sm">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Conflict 11 of 14</span>
+<div class="inline-flex rounded border border-outline-variant/40 overflow-hidden bg-surface-container-lowest shadow-sm">
+<button class="px-2 py-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low border-r border-outline-variant/40 transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-2.5 py-1 text-on-surface hover:bg-surface-container-low text-label-md font-label-md flex items-center gap-1 transition-colors">
+<span>Next Conflict (3 remaining)</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- WORKBENCH BODY CONTAINER -->
+<div class="p-space-2xl max-w-7xl w-full mx-auto flex flex-col gap-space-xl">
+<!-- 3. CENTER DIFFERENCE & CONFLICT INDICATOR BANNER -->
+<div class="bg-surface-container-lowest border border-error/30 rounded-lg p-space-md shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex items-start md:items-center gap-space-md pl-1">
+<div class="w-9 h-9 rounded bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="rule">rule</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Quantity Conflict: 2 vs 3 Paneer Tikka Butter Rolls</h2>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-mono-data-sm text-mono-data-sm font-semibold">ITEM DELTA +1</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                Channel payload total discrepancy: <span class="font-mono-data-sm text-mono-data-sm font-semibold text-error">+₹200.00 delta</span>. Customer entity matched via identical phone number <span class="font-mono-data-sm text-mono-data-sm text-on-surface font-medium">+91 98110-XXXXX</span>.
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 self-end md:self-center">
+<span class="text-label-sm font-label-sm px-2.5 py-1 rounded bg-surface-container-low text-on-surface-variant border border-outline-variant/30 flex items-center gap-1 font-mono-data-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> AUTO-HOLD ON POS DISPATCH
+            </span>
+</div>
+</div>
+<!-- 2. MAIN COMPARISON WORKBENCH (SIDE-BY-SIDE DUAL COLUMN) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+<!-- LEFT COLUMN: SOURCE ORDER A (ZOMATO) -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg shadow-sm flex flex-col overflow-hidden">
+<!-- Order A Header -->
+<div class="p-space-lg bg-surface-container-low/60 border-b border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 bg-error text-on-error text-label-sm font-label-sm font-bold rounded tracking-wide">ZOMATO</span>
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#ZOM-48192</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="schedule">schedule</span>
+                  14:22:10 IST
+                </span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-label-sm font-label-sm font-medium">Source Order A</span>
+</div>
+<!-- Customer & Fulfillment Metadata -->
+<div class="p-space-lg border-b border-outline-variant/30 grid grid-cols-2 gap-space-md text-body-sm font-body-sm bg-surface-container-lowest">
+<div>
+<span class="text-label-sm font-label-sm text-outline block mb-0.5">CUSTOMER</span>
+<div class="font-semibold text-on-surface">Rahul Sharma</div>
+<div class="font-mono-data-sm text-mono-data-sm text-on-surface-variant">+91 98110-XXXXX</div>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline block mb-0.5">FULFILLMENT POSTURE</span>
+<div class="inline-flex items-center gap-1 text-primary font-medium text-body-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Delivery Partner Assigned
+                </div>
+<div class="text-[11px] text-outline">Rider arriving in 8 mins</div>
+</div>
+</div>
+<!-- Line Items Diff List -->
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-space-sm">Ingested Manifest</div>
+<div class="space-y-space-sm">
+<!-- Conflicting Item Highlight -->
+<div class="p-space-sm rounded bg-error-container/20 border-l-2 border-error flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-mono-data-md text-mono-data-md font-bold text-on-surface">2 ×</span>
+<span class="text-body-md font-body-md font-medium text-on-surface">Paneer Tikka Butter Roll</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Standard portion, medium spice</div>
+</div>
+<div class="text-right">
+<div class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">₹520.00</div>
+<div class="font-mono-data-sm text-mono-data-sm text-outline">₹260/unit</div>
+</div>
+</div>
+<!-- Neutral Item -->
+<div class="p-space-sm rounded bg-surface-container-low/40 border border-outline-variant/30 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-mono-data-md text-mono-data-md font-medium text-on-surface">1 ×</span>
+<span class="text-body-md font-body-md text-on-surface">Diet Coke (330ml Can)</span>
+</div>
+<div class="text-body-sm font-body-sm text-outline">Chilled beverage</div>
+</div>
+<div class="text-right">
+<div class="font-mono-data-md text-mono-data-md text-on-surface">₹60.00</div>
+<div class="font-mono-data-sm text-mono-data-sm text-outline">₹60/unit</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Summary -->
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Zomato Paid Pre-Tax Total</span>
+<span class="font-mono-data-lg text-mono-data-lg font-bold text-on-surface">₹580.00</span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: SOURCE ORDER B (WHATSAPP ORDER BOT) -->
+<div class="bg-surface-container-lowest border-2 border-primary-container/40 rounded-lg shadow-sm flex flex-col overflow-hidden relative">
+<!-- Order B Header -->
+<div class="p-space-lg bg-secondary-container/20 border-b border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary text-label-sm font-label-sm font-bold rounded tracking-wide">WHATSAPP POS</span>
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#WA-9921</span>
+<span class="text-outline text-body-sm">•</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]" data-icon="schedule">schedule</span>
+                  14:25:44 IST
+                </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-primary font-mono-data-sm text-mono-data-sm font-medium">+3m later</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary text-label-sm font-label-sm font-semibold">Source Order B</span>
+</div>
+<!-- Customer & Transcript Metadata -->
+<div class="p-space-lg border-b border-outline-variant/30 flex flex-col gap-space-sm bg-surface-container-lowest">
+<div class="grid grid-cols-2 gap-space-md text-body-sm font-body-sm">
+<div>
+<span class="text-label-sm font-label-sm text-outline block mb-0.5">CUSTOMER ENTITY</span>
+<div class="font-semibold text-on-surface">Rahul S.</div>
+<div class="font-mono-data-sm text-mono-data-sm text-on-surface-variant">+91 98110-XXXXX</div>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline block mb-0.5">INGESTION METHOD</span>
+<div class="text-body-sm font-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="smart_toy">smart_toy</span>
+                    AI Conversational Parser v2
+                  </div>
+<div class="text-[11px] text-outline">Verified WhatsApp Webhook</div>
+</div>
+</div>
+<!-- Message Transcript Snippet -->
+<div class="p-space-sm bg-surface-container-low rounded border border-outline-variant/30 flex items-start gap-2 mt-1">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="chat">chat</span>
+<div class="text-body-sm font-body-sm">
+<span class="font-medium text-on-surface">Verified Transcript: </span>
+<span class="italic text-on-surface-variant">"Bhaiya please make it 3 rolls instead of 2. Very urgent thanks!"</span>
+</div>
+</div>
+</div>
+<!-- Line Items Diff List -->
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-space-sm">Requested Items</div>
+<div class="space-y-space-sm">
+<!-- Conflicting Item Highlight with Delta -->
+<div class="p-space-sm rounded bg-primary-container/10 border-l-2 border-primary-container flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-mono-data-md text-mono-data-md font-bold text-primary">3 ×</span>
+<span class="text-body-md font-body-md font-medium text-on-surface">Paneer Tikka Butter Roll</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary text-[10px] font-mono-data-sm font-bold">+1 NEW</span>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Updated count per user WhatsApp message</div>
+</div>
+<div class="text-right">
+<div class="font-mono-data-md text-mono-data-md font-semibold text-primary">₹780.00</div>
+<div class="font-mono-data-sm text-mono-data-sm text-outline">₹260/unit (+₹260)</div>
+</div>
+</div>
+<!-- Absent line item note -->
+<div class="p-space-sm rounded bg-surface-container-low/20 border border-dashed border-outline-variant/50 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="italic">Diet Coke (Not specified in chat prompt)</span>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">Preserved in master draft</span>
+</div>
+</div>
+</div>
+<!-- Financial Summary -->
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/30 flex items-center justify-between">
+<div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Parsed WhatsApp Order Subtotal</span>
+<span class="text-label-sm font-label-sm text-error ml-2 font-mono-data-sm font-medium">(+₹200.00 vs Zomato)</span>
+</div>
+<span class="font-mono-data-lg text-mono-data-lg font-bold text-on-surface">₹780.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. AI RECONCILIATION INSIGHT PANEL -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[15px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">PakkaOrder AI Reconciliation Model v3.2</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-mono-data-sm text-mono-data-sm font-medium">Confidence: 99.8% Entity / 94.2% Intent</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline font-mono-data-sm">Log Hash: #reconcile-89241-delta</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mb-space-md">
+<div class="p-space-sm bg-surface-container-low/50 rounded border border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-on-surface mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified_user">verified_user</span>
+<span>Entity Hash Alignment</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Phone number (+91 98110-XXXXX) &amp; delivery geo-hash match with <span class="font-semibold text-on-surface">99.8%</span> confidence.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low/50 rounded border border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-on-surface mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="timelapse">timelapse</span>
+<span>Temporal Proximity</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                WhatsApp message received <span class="font-semibold text-on-surface">3m 34s</span> after Zomato checkout. Natural modification window.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low/50 rounded border border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-on-surface mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="psychology">psychology</span>
+<span>Intent Hypothesis</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                High probability customer attempted post-order modification via WhatsApp chat without canceling Zomato order.
+              </p>
+</div>
+</div>
+<!-- Safety Gate Callout -->
+<div class="p-space-sm bg-error-container/20 rounded border border-error/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error" data-icon="lock">lock</span>
+<span class="text-body-sm font-body-sm font-medium text-on-surface">
+                Safety Warning: Automated merging blocked due to quantity conflict. Operator verification required.
+              </span>
+</div>
+<span class="text-label-sm font-label-sm font-mono-data-sm text-outline">RULE: SAFEGUARD_QTY_DELTA_STRICT</span>
+</div>
+</div>
+<!-- 5. HUMAN DECISION & RESOLUTION CONTROLS -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Operator Resolution Decision</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Select canonical resolution strategy to synchronize KDS, POS, and delivery billing.</p>
+</div>
+<!-- Interactive Resolution Options (Linear/Stripe style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- OPTION A (SELECTED STATE) -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-lg border-2 border-primary-container bg-surface-container-low/40 cursor-pointer transition-all">
+<input checked="" class="mt-1 text-primary-container focus:ring-primary-container h-4 w-4 border-outline-variant" name="resolution_choice" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-0.5">
+<span class="text-label-md font-label-md font-bold text-on-surface">Option A: Confirm Customer Update (3 Rolls Master)</span>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary text-[10px] font-mono-data-sm font-semibold">RECOMMENDED</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Updates Canonical Master to 3 rolls + 1 Diet Coke (Total ₹840). Dispatches delta ₹200 as collect-on-delivery bill to rider.
+                </p>
+</div>
+</label>
+<!-- OPTION B -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-lg border border-outline-variant/50 hover:border-outline hover:bg-surface-container-low/20 cursor-pointer transition-all">
+<input class="mt-1 text-primary-container focus:ring-primary-container h-4 w-4 border-outline-variant" name="resolution_choice" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-0.5">
+<span class="text-label-md font-label-md font-semibold text-on-surface">Option B: Fulfill Zomato Only (2 Rolls)</span>
+<span class="text-mono-data-sm text-mono-data-sm text-outline">₹580.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Ignore WhatsApp update. Fulfill original Zomato payload. Dispatches automated polite rejection reply to WhatsApp.
+                </p>
+</div>
+</label>
+<!-- OPTION C -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-lg border border-outline-variant/50 hover:border-outline hover:bg-surface-container-low/20 cursor-pointer transition-all">
+<input class="mt-1 text-primary-container focus:ring-primary-container h-4 w-4 border-outline-variant" name="resolution_choice" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-0.5">
+<span class="text-label-md font-label-md font-semibold text-on-surface">Option C: Confirm Separate Distinct Orders (Fulfill Both)</span>
+<span class="text-mono-data-sm text-mono-data-sm text-outline">5 Rolls Total</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Treat as two distinct non-duplicate orders. Generate second POS ticket for WhatsApp bot order (#WA-9921).
+                </p>
+</div>
+</label>
+<!-- OPTION D -->
+<label class="relative flex items-start gap-space-md p-space-md rounded-lg border border-outline-variant/50 hover:border-outline hover:bg-surface-container-low/20 cursor-pointer transition-all">
+<input class="mt-1 text-primary-container focus:ring-primary-container h-4 w-4 border-outline-variant" name="resolution_choice" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-0.5">
+<span class="text-label-md font-label-md font-semibold text-on-surface">Option D: Keep Pending / Call Customer</span>
+<span class="text-mono-data-sm text-mono-data-sm text-tertiary">Dial Desk</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  Places conflict into manual phone-resolution holding queue. Alerts store supervisor for quick callback.
+                </p>
+</div>
+</label>
+</div>
+<!-- Mandatory Audit Rationale & Notes Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-sm border-t border-outline-variant/30">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1">
+                Mandatory Audit Rationale <span class="text-error">*</span>
+</label>
+<select class="w-full text-body-md font-body-md bg-surface-container-lowest border border-outline-variant rounded p-2 text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container">
+<option selected="">Customer direct WhatsApp update verified by operator</option>
+<option>Kitchen verified extra item addition manually</option>
+<option>Accidental double order resolved</option>
+<option>Customer canceled extra item over phone</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="block text-label-md font-label-md text-on-surface mb-1">
+                Audit Notes &amp; Verification Reference
+              </label>
+<input class="w-full text-body-md font-body-md bg-surface-container-lowest border border-outline-variant rounded p-2 text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container" type="text" value="Customer chat confirmed by Rahul via verified mobile +91 98110-XXXXX at 14:26 IST"/>
+</div>
+</div>
+<!-- Final Action Buttons Strip -->
+<div class="flex items-center justify-between pt-space-md border-t border-outline-variant/30 flex-wrap gap-space-md">
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 bg-surface-container-lowest border border-outline-variant/60 hover:bg-surface-container-low text-on-surface text-label-md font-label-md rounded flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[17px]" data-icon="close">close</span>
+<span>Dismiss Conflict</span>
+</button>
+<button class="px-space-md py-2 bg-surface-container-lowest border border-outline-variant/60 hover:bg-surface-container-low text-on-surface text-label-md font-label-md rounded flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[17px]" data-icon="phone_in_talk">phone_in_talk</span>
+<span>Call Rahul (+91 98110-XXXXX)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="text-right">
+<div class="text-label-sm font-label-sm text-outline">NEW CANONICAL MASTER TOTAL</div>
+<div class="font-mono-data-lg text-mono-data-lg font-bold text-primary">₹840.00</div>
+</div>
+<button class="px-space-xl py-2.5 bg-primary-container hover:bg-primary text-on-primary text-label-md font-label-md font-semibold rounded flex items-center gap-2 shadow-sm transition-all transform active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+<span>Verify &amp; Commit Master Order (₹840.00)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 6. OPERATIONAL AUDIT TIMELINE LOG -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="history">history</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Event Ingestion Audit Trail</h3>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">Live Microsecond Event Stream</span>
+</div>
+<div class="space-y-space-md font-mono-data-sm text-mono-data-sm">
+<div class="flex items-start gap-space-md">
+<span class="text-outline w-24 shrink-0">14:22:10.114</span>
+<div class="w-2 h-2 rounded-full bg-primary-container mt-1 shrink-0"></div>
+<div class="flex-1 text-on-surface">
+<span class="font-semibold text-on-surface">INGEST_ZOMATO_WEBHOOK:</span> Order #ZOM-48192 received with payload [2x Paneer Tikka Butter Roll, 1x Diet Coke]. Status: PREP_ASSIGNED.
+              </div>
+</div>
+<div class="flex items-start gap-space-md">
+<span class="text-outline w-24 shrink-0">14:22:12.802</span>
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-1 shrink-0"></div>
+<div class="flex-1 text-on-surface-variant">
+<span class="font-semibold text-on-surface">POS_DISPATCH_BROADCAST:</span> Ticket printed to Kitchen Display Screen #2 (Tandoor Section).
+              </div>
+</div>
+<div class="flex items-start gap-space-md">
+<span class="text-outline w-24 shrink-0">14:25:44.209</span>
+<div class="w-2 h-2 rounded-full bg-primary-container mt-1 shrink-0"></div>
+<div class="flex-1 text-on-surface">
+<span class="font-semibold text-on-surface">WHATSAPP_BOT_INGEST:</span> Incoming customer modification on channel bot: "Bhaiya please make it 3 rolls instead of 2. Very urgent thanks!"
+              </div>
+</div>
+<div class="flex items-start gap-space-md">
+<span class="text-outline w-24 shrink-0">14:25:44.981</span>
+<div class="w-2 h-2 rounded-full bg-error mt-1 shrink-0"></div>
+<div class="flex-1 text-error font-medium">
+<span class="font-bold">CONFLICT_RAISED:</span> PakkaOrder AI flagged delta between #ZOM-48192 (2 qty) and #WA-9921 (3 qty). KDS ticket held pending human verification.
+              </div>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER STRIP -->
+<footer class="mt-auto px-space-2xl py-space-md border-t border-outline-variant/30 bg-surface-container-lowest text-label-sm font-label-sm text-outline flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span>PakkaOrder Enterprise Engine • Build 24.11-RC4</span>
+<span>•</span>
+<span>Outlet: Connaught Place Central (Hub #04)</span>
+</div>
+<div class="flex items-center gap-space-md font-mono-data-sm text-mono-data-sm">
+<span>Server latency: 28ms</span>
+<span>•</span>
+<span class="text-primary font-semibold">All Systems Normal</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PakkaOrder AI — Many Channels. One Pakka Order.</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#80d5cb",
+            "on-background": "#0b1c30",
+            "surface-dim": "#cbdbf5",
+            "surface-container-highest": "#d3e4fe",
+            "surface-container-high": "#dce9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f8f9ff",
+            "tertiary": "#2d5951",
+            "on-primary-fixed-variant": "#00504a",
+            "on-secondary-container": "#266d68",
+            "surface-container": "#e5eeff",
+            "outline-variant": "#bdc9c6",
+            "tertiary-fixed-dim": "#a2d0c6",
+            "on-tertiary-container": "#c5f3ea",
+            "surface-container-low": "#eff4ff",
+            "on-primary-container": "#a3faef",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "inverse-surface": "#213145",
+            "secondary-fixed": "#abefe8",
+            "secondary-container": "#a8ece5",
+            "on-tertiary": "#ffffff",
+            "primary": "#005c55",
+            "tertiary-fixed": "#bdece2",
+            "on-secondary-fixed": "#00201e",
+            "tertiary-container": "#467169",
+            "outline": "#6e7977",
+            "surface-variant": "#d3e4fe",
+            "surface-tint": "#006a63",
+            "primary-container": "#0f766e",
+            "on-primary-fixed": "#00201d",
+            "background": "#f8f9ff",
+            "secondary-fixed-dim": "#8fd3cc",
+            "secondary": "#216963",
+            "inverse-primary": "#80d5cb",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "primary-fixed": "#9cf2e8",
+            "on-tertiary-fixed-variant": "#224e47",
+            "inverse-on-surface": "#eaf1ff",
+            "on-surface-variant": "#3e4947",
+            "on-surface": "#0b1c30",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#00504b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-2xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-xxs": "0.125rem",
+            "margin": "1.5rem",
+            "margin-desktop": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-xl": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "0.75rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "mono-data-md": [
+              "JetBrains Mono"
+            ],
+            "headline-xl": [
+              "Inter"
+            ],
+            "body-md": [
+              "Inter"
+            ],
+            "label-sm": [
+              "Inter"
+            ],
+            "headline-lg": [
+              "Inter"
+            ],
+            "body-lg": [
+              "Inter"
+            ],
+            "mono-data-sm": [
+              "JetBrains Mono"
+            ],
+            "body-sm": [
+              "Inter"
+            ],
+            "headline-sm": [
+              "Inter"
+            ],
+            "headline-xl-mobile": [
+              "Inter"
+            ],
+            "label-md": [
+              "Inter"
+            ],
+            "headline-md": [
+              "Inter"
+            ],
+            "mono-data-lg": [
+              "JetBrains Mono"
+            ],
+            "headline-lg-mobile": [
+              "Inter"
+            ]
+          },
+          "fontSize": {
+            "mono-data-md": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-xl": [
+              "36px",
+              {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.025em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-md": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "400"
+              }
+            ],
+            "label-sm": [
+              "11px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-lg": [
+              "28px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-lg": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }
+            ],
+            "mono-data-sm": [
+              "11px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "400"
+              }
+            ],
+            "body-sm": [
+              "12px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-sm": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-xl-mobile": [
+              "28px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-md": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-md": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ],
+            "mono-data-lg": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-lg-mobile": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+    }
+    /* Hairline styling & high precision grid */
+    .hairline-border {
+      border: 1px solid #E2E8F0;
+    }
+    .grid-backdrop {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+    }
+    /* Subtle ambient mesh */
+    .hero-mesh {
+      background: radial-gradient(circle at 15% 20%, rgba(15, 118, 110, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 85% 75%, rgba(128, 213, 203, 0.12) 0%, transparent 45%);
+    }
+    /* Shimmer button animation */
+    @keyframes shimmer-move {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: translateX(-100%);
+      animation: shimmer-move 3.2s infinite ease-in-out;
+    }
+    /* Waveform animation */
+    @keyframes wave-bounce {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+    .wave-bar {
+      transform-origin: center;
+      animation: wave-bounce 0.8s ease-in-out infinite alternate;
+    }
+    .wave-bar-1 { animation-delay: 0.1s; }
+    .wave-bar-2 { animation-delay: 0.25s; }
+    .wave-bar-3 { animation-delay: 0.4s; }
+    .wave-bar-4 { animation-delay: 0.15s; }
+    .wave-bar-5 { animation-delay: 0.3s; }
+    .wave-bar-6 { animation-delay: 0.5s; }
+    .wave-bar-7 { animation-delay: 0.2s; }
+
+    /* Float keyframes */
+    @keyframes subtle-float-1 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    @keyframes subtle-float-2 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(8px); }
+    }
+    .float-item-1 { animation: subtle-float-1 4.5s ease-in-out infinite; }
+    .float-item-2 { animation: subtle-float-2 5.2s ease-in-out infinite; }
+
+    /* Feature card glass sheen */
+    .feature-sheen-card {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .feature-sheen-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.08), 0 8px 10px -6px rgba(15, 118, 110, 0.04);
+      border-color: rgba(15, 118, 110, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Live Ticker Marquee */
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 24s linear infinite;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Confetti Particle Sparkle */
+    @keyframes sparkle-burst {
+      0% { transform: scale(0.6) rotate(0deg); opacity: 0; }
+      50% { transform: scale(1.15) rotate(15deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .sparkle-pop {
+      animation: sparkle-burst 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md selection:bg-secondary-container selection:text-on-secondary-fixed">
+<!-- 1. STICKY HEADER / NAVIGATION -->
+<header class="sticky top-0 z-50 w-full h-14 bg-surface-container-lowest/95 backdrop-blur hairline-border border-t-0 border-x-0 shadow-sm transition-all duration-150">
+<div class="max-w-7xl mx-auto h-full px-space-md md:px-margin-desktop flex items-center justify-between">
+<!-- Brand Logo & Wordmark -->
+<a class="flex items-center gap-space-sm group" href="#">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined fill-icon text-white" style="font-size: 18px;">auto_awesome</span>
+</div>
+<div class="flex items-baseline gap-space-xxs">
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">PakkaOrder</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">AI</span>
+</div>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-space-xl">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#the-problem">The Problem</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#how-it-works">How It Works</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#features">Features</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#interactive-demo">Interactive Demo</a>
+</nav>
+<!-- Action Cluster -->
+<div class="flex items-center gap-space-md">
+<button class="font-label-md text-label-md text-on-surface hover:text-primary px-space-sm py-space-xs transition-colors">
+          Sign In
+        </button>
+<a class="btn-shimmer inline-flex items-center gap-space-xs px-space-md py-space-xs h-9 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-all duration-150 shadow-sm active:scale-95" href="#interactive-demo">
+<span>Explore Live Demo</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- 1.5 LIVE OMNICHANNEL TELEMETRY TICKER -->
+<div class="w-full bg-surface-container-low hairline-border border-x-0 border-t-0 overflow-hidden py-1.5 select-none relative z-20">
+<div class="ticker-track flex items-center gap-space-lg text-mono-data-sm text-on-surface-variant text-[11px]">
+<!-- Ticker items repeat 1 -->
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-semibold text-emerald-800">[ZOMATO #48192]</span> Webhook received (28ms) • South Delhi</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[14px]">graphic_eq</span><span class="font-semibold text-primary">[WHATSAPP HINGLISH]</span> Voice note modifier resolved: "Extra chutney" (14ms)</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span><span class="font-semibold text-blue-800">[SWIGGY DINE-IN #912]</span> Table merge reconciled with counter token</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600 text-[14px]">done_all</span><span class="font-semibold text-on-surface">[KOT #391]</span> Verified thermal master auto-printed (Zero Duplication)</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span><span class="font-semibold text-amber-800">[PETPOOJA SYNC]</span> P99 latency: 31ms • Active outlets: 1,480+</div>
+<span class="text-outline-variant">•</span>
+<!-- Ticker items repeat 2 (seamless loop) -->
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span class="font-semibold text-emerald-800">[ZOMATO #48192]</span> Webhook received (28ms) • South Delhi</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[14px]">graphic_eq</span><span class="font-semibold text-primary">[WHATSAPP HINGLISH]</span> Voice note modifier resolved: "Extra chutney" (14ms)</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span><span class="font-semibold text-blue-800">[SWIGGY DINE-IN #912]</span> Table merge reconciled with counter token</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600 text-[14px]">done_all</span><span class="font-semibold text-on-surface">[KOT #391]</span> Verified thermal master auto-printed (Zero Duplication)</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span><span class="font-semibold text-amber-800">[PETPOOJA SYNC]</span> P99 latency: 31ms • Active outlets: 1,480+</div>
+<span class="text-outline-variant">•</span>
+</div>
+</div>
+<!-- 2. HERO SECTION -->
+<section class="relative pt-space-3xl pb-space-3xl overflow-hidden grid-backdrop hero-mesh border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop relative z-10">
+<!-- Center Content Intro -->
+<div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+<!-- Credibility Chip with Live Telemetry Pulse -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xxs bg-surface-container-lowest/90 backdrop-blur hairline-border rounded-full mb-space-lg shadow-sm hover:border-primary/50 transition-colors">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-mono-data-sm text-mono-data-sm text-primary font-medium tracking-tight">AI-Assisted Order Verification • Omnichannel Reconciliation Engine</span>
+<span class="hidden sm:inline-block border-l border-outline-variant/50 pl-2 text-outline text-[11px] font-mono-data-sm" id="hero-stream-counter">Live Ingestion: 48 ev/s</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-headline-xl md:text-[44px] md:leading-[52px] text-on-surface font-bold tracking-tight mb-space-sm">
+          Many Channels. <span class="text-primary-container underline decoration-primary-fixed-dim decoration-4 underline-offset-4">One Pakka Order.</span>
+</h1>
+<!-- Supporting Headline -->
+<h2 class="font-headline-md text-headline-md text-on-surface-variant font-medium mb-space-md">
+          Smarter Order Reconciliation for Modern Restaurants.
+        </h2>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-space-2xl text-balance">
+          Bring WhatsApp, delivery-platform and POS order records into one intelligent workflow. Detect conflicting modifications, review AI insights, and verify the final order before fulfillment.
+        </p>
+<!-- CTA Row -->
+<div class="flex flex-wrap items-center justify-center gap-space-md mb-space-3xl">
+<a class="btn-shimmer h-10 px-space-xl bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-md text-label-md inline-flex items-center gap-space-sm transition-all duration-150 shadow-sm active:scale-95" href="#interactive-demo">
+<span class="material-symbols-outlined fill-icon text-[18px]">verified</span>
+<span>Explore Live Demo</span>
+</a>
+<a class="h-10 px-space-xl bg-surface-container-lowest hover:bg-surface-container-low text-on-surface hairline-border rounded-lg font-label-md text-label-md inline-flex items-center gap-space-sm transition-all duration-150 hover:border-primary/40" href="#how-it-works">
+<span class="material-symbols-outlined text-[18px] text-primary">play_circle</span>
+<span>See How It Works</span>
+</a>
+</div>
+</div>
+<!-- Floating Ambient KPI Chips -->
+<div class="relative max-w-5xl mx-auto">
+<div class="hidden lg:flex absolute -left-12 -top-6 float-item-1 z-30 bg-surface-container-lowest/95 backdrop-blur hairline-border border-emerald-200 shadow-md rounded-lg px-3 py-2 items-center gap-2">
+<div class="w-6 h-6 rounded bg-emerald-50 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]">trending_down</span>
+</div>
+<div class="text-left">
+<div class="font-mono-data-sm text-[11px] font-bold text-emerald-800">-14.2% Food Waste</div>
+<div class="text-[10px] text-outline">Double tickets blocked</div>
+</div>
+</div>
+<div class="hidden lg:flex absolute -right-10 top-14 float-item-2 z-30 bg-surface-container-lowest/95 backdrop-blur hairline-border border-primary/30 shadow-md rounded-lg px-3 py-2 items-center gap-2">
+<div class="w-6 h-6 rounded bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]">speed</span>
+</div>
+<div class="text-left">
+<div class="font-mono-data-sm text-[11px] font-bold text-primary">P99 &lt; 38ms Latency</div>
+<div class="text-[10px] text-outline">Real-time webhook reconciler</div>
+</div>
+</div>
+<div class="hidden lg:flex absolute -left-8 bottom-12 float-item-2 z-30 bg-surface-container-lowest/95 backdrop-blur hairline-border border-primary/30 shadow-md rounded-lg px-3 py-2 items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+</div>
+<div class="text-left">
+<div class="font-mono-data-sm text-[11px] font-bold text-on-surface">100% KOT Match</div>
+<div class="text-[10px] text-outline">Single canonical dispatch</div>
+</div>
+</div>
+<!-- LAYERED INTERACTIVE PRODUCT PREVIEW (HERO VISUAL MOCKUP) -->
+<div class="bg-surface-container-lowest hairline-border rounded-xl shadow-lg p-space-md md:p-space-xl relative transition-all" id="hero-preview-box">
+<!-- Mockup Window Bar -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-sm mb-space-lg flex-wrap gap-2">
+<div class="flex items-center gap-space-sm">
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/60"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/60"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/60"></div>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline ml-space-xs">ORDER RECONCILER • SESSION #REC-9821</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- Re-run stream simulation interactive button -->
+<button class="font-mono-data-sm text-mono-data-sm text-primary hover:text-white hover:bg-primary bg-surface-container-low px-space-sm py-space-xxs rounded hairline-border transition-all flex items-center gap-1 active:scale-95" onclick="runHeroSimulation()" title="Click to re-run AI matching simulation">
+<span class="material-symbols-outlined text-[13px] animate-spin" id="hero-sim-spin" style="animation-duration: 2s; display: none;">sync</span>
+<span id="hero-sim-btn-text">Re-run Live Match</span>
+</button>
+<span class="font-mono-data-sm text-mono-data-sm text-primary bg-surface-container-low px-space-sm py-space-xxs rounded hairline-border" id="hero-latency-badge">
+    LATENCY: 38ms
+  </span>
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface">LIVE STREAM</span>
+</div>
+</div>
+<!-- Comparative Ingestion Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-lg">
+<!-- Left Card: WhatsApp Order with Interactive Audio waveform Note -->
+<div class="bg-surface rounded-lg hairline-border p-space-md border-l-4 border-l-emerald-600 relative hover:border-emerald-500/80 transition-colors">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-emerald-600">chat</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">WhatsApp Ingestion</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">19:42:12 IST</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border mb-space-sm text-body-sm text-on-surface italic">
+    "Bhaiya please make it 3 rolls instead of 2. Very urgent thanks!"
+  </div>
+<!-- Interactive WhatsApp Audio Voice Note Player -->
+<div class="mb-space-sm bg-emerald-50/70 hairline-border border-emerald-200/80 rounded-md p-2 flex items-center justify-between gap-2 cursor-pointer hover:bg-emerald-100/60 transition-colors select-none" id="voice-player-btn" onclick="toggleHeroVoiceNote()" title="Click to play voice note sample">
+<div class="flex items-center gap-2">
+<button aria-label="Play voice note" class="w-6 h-6 rounded-full bg-emerald-700 text-white flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" id="voice-play-icon">play_arrow</span>
+</button>
+<div class="flex flex-col">
+<span class="text-[11px] font-mono-data-sm font-semibold text-emerald-950 flex items-center gap-1">
+          Hinglish Voice Note (0:04)
+          <span class="text-[9px] bg-emerald-200/80 text-emerald-800 px-1 rounded">Parsed</span>
+</span>
+<span class="text-[10px] text-emerald-800" id="voice-status-text">Click to listen waveform</span>
+</div>
+</div>
+<!-- Moving SVG waveform visualization -->
+<div class="flex items-center gap-0.5 h-5 px-1" id="waveform-container">
+<span class="w-1 bg-emerald-600 rounded-full h-2"></span>
+<span class="w-1 bg-emerald-600 rounded-full h-4"></span>
+<span class="w-1 bg-emerald-600 rounded-full h-3"></span>
+<span class="w-1 bg-emerald-700 rounded-full h-5"></span>
+<span class="w-1 bg-emerald-600 rounded-full h-3"></span>
+<span class="w-1 bg-emerald-600 rounded-full h-4"></span>
+<span class="w-1 bg-emerald-600 rounded-full h-2"></span>
+</div>
+</div>
+<div class="space-y-space-xs mb-space-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">3x Paneer Tikka Roll</span>
+<span class="font-mono-data-md text-mono-data-md font-medium text-on-surface">₹780.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm text-outline">
+<span>Special note: Extra mint chutney</span>
+<span class="font-mono-data-sm text-mono-data-sm">Included</span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/30 flex justify-between items-center font-mono-data-sm text-mono-data-sm">
+<span class="text-outline">CUST: +91 98711 02918</span>
+<span class="text-emerald-700 bg-emerald-50 px-space-xs py-space-xxs rounded hairline-border font-medium">Direct Customer Modification</span>
+</div>
+</div>
+<!-- Right Card: Zomato Order Record -->
+<div class="bg-surface rounded-lg hairline-border p-space-md border-l-4 border-l-red-500 relative hover:border-red-400 transition-colors">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-red-600">receipt_long</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Zomato Aggregator Payload</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">19:41:05 IST</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border mb-space-sm font-mono-data-sm text-mono-data-sm text-outline">
+    PAYLOAD: JSON_EVENT_ORDER_PLACED • REF_ID: #ZM-5542910
+  </div>
+<div class="space-y-space-xs mb-space-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium">2x Paneer Tikka Roll</span>
+<span class="font-mono-data-md text-mono-data-md font-medium text-on-surface">₹520.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface">1x Diet Coke 300ml</span>
+<span class="font-mono-data-md text-mono-data-md font-medium text-on-surface">₹60.00</span>
+</div>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/30 flex justify-between items-center font-mono-data-sm text-mono-data-sm">
+<span class="text-outline">NET VALUE: ₹580.00</span>
+<span class="text-error bg-error-container/40 px-space-xs py-space-xxs rounded hairline-border font-medium">Discrepancy Pending</span>
+</div>
+</div>
+</div>
+<!-- Center Alert Badge (Conflict Identified) -->
+<div class="bg-error-container/30 hairline-border border-error/30 rounded-lg p-space-sm mb-space-lg flex flex-col md:flex-row items-center justify-between gap-space-sm transition-all" id="hero-alert-banner">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded bg-error text-on-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined fill-icon text-[18px]">warning</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-error">Quantity Mismatch: 2 vs 3 Paneer Tikka Rolls • Item Delta +1</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">WhatsApp message received 67 seconds after online order submission indicates customer intention to scale order.</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-space-xs">
+<span class="font-mono-data-sm text-mono-data-sm text-primary font-semibold bg-surface-container-lowest px-space-sm py-1 rounded hairline-border">
+    AI Recommendation: Apply WhatsApp Mod (+₹260)
+  </span>
+</div>
+</div>
+<!-- Master Verified Canonical Order Output Card -->
+<div class="bg-surface-container-low rounded-lg hairline-border border-primary/40 p-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-sm border-b border-outline-variant/30 pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary fill-icon">check_circle</span>
+<span class="font-label-md text-label-md font-bold text-primary">CANONICAL MASTER ORDER #PK-9821</span>
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-space-xs py-space-xxs rounded ml-space-xs">Verified For POS Print</span>
+</div>
+<div class="flex items-center gap-space-md font-mono-data-sm text-mono-data-sm">
+<span class="text-outline">CHANNEL MERGE CONFIDENCE:</span>
+<div class="flex items-center gap-2">
+<div class="w-16 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-700" id="hero-confidence-bar" style="width: 99.8%;"></div>
+</div>
+<span class="text-primary font-bold" id="hero-confidence-num">99.8%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md items-center">
+<div class="md:col-span-2 space-y-1">
+<div class="flex items-center justify-between font-body-sm text-on-surface">
+<span class="font-semibold">3x Paneer Tikka Roll <span class="text-primary font-mono-data-sm">(Synced from WhatsApp Override)</span></span>
+<span class="font-mono-data-md">₹780.00</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-on-surface">
+<span>1x Diet Coke 300ml <span class="text-outline font-mono-data-sm">(Retained from Zomato Ticket)</span></span>
+<span class="font-mono-data-md">₹60.00</span>
+</div>
+<div class="text-body-sm text-outline italic">
+    Chef Note: "Extra mint chutney included as requested via WhatsApp."
+  </div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border flex flex-col justify-between">
+<div class="flex justify-between items-center font-mono-data-sm text-mono-data-sm text-outline mb-1">
+<span>RECONCILED TOTAL</span>
+<span class="font-mono-data-lg text-primary font-bold">₹840.00</span>
+</div>
+<button class="w-full h-8 bg-primary-container text-on-primary font-label-sm rounded flex items-center justify-center gap-space-xxs hover:bg-primary transition-colors active:scale-95" id="hero-print-btn" onclick="triggerPrintNotification()">
+<span class="material-symbols-outlined text-[15px]">print</span>
+<span id="hero-print-btn-label">Send Verified KOT to Kitchen</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. THE PROBLEM SECTION -->
+<section class="py-space-3xl bg-surface border-b border-outline-variant/30" id="the-problem">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<!-- Section Header -->
+<div class="max-w-3xl mb-space-2xl">
+<span class="font-mono-data-sm text-mono-data-sm text-primary tracking-wider uppercase font-semibold">THE OMNICHANNEL DILEMMA</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mt-space-xs mb-space-sm">
+          Every Channel Brings an Order. Not Every Order Tells the Same Story.
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          In rush hours across India and Southeast Asia, restaurants run Zomato, Swiggy, WhatsApp Business, phone deliveries, and table terminals simultaneously. Asynchronous data causes operational blindspots.
+        </p>
+</div>
+<!-- Analytical Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Card 1: Duplicate Order Entries -->
+<div class="feature-sheen-card bg-surface-container-lowest hairline-border rounded-lg p-space-lg">
+<div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 hairline-border border-red-200 flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined fill-icon">content_copy</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-error bg-error-container/30 px-space-xs py-space-xxs rounded">CRITICAL COST LEAK</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mt-space-sm mb-space-xs">Duplicate Order Entries</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+            Aggregator webhooks stutter under network spikes. When customers tap order again or both POS and store tablet accept identical tokens, kitchens punch double orders resulting in unsaleable food waste.
+          </p>
+<div class="bg-surface p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm text-outline flex items-center justify-between">
+<span class="text-on-surface font-semibold">Daily Impact:</span>
+<span class="text-error font-medium">3.4% margin erosion</span>
+</div>
+</div>
+<!-- Card 2: Conflicting Customer Modifications -->
+<div class="feature-sheen-card bg-surface-container-lowest hairline-border rounded-lg p-space-lg">
+<div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 hairline-border border-amber-200 flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined fill-icon">edit_attributes</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-amber-700 bg-amber-50 px-space-xs py-space-xxs rounded">COMMUNICATION GAP</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mt-space-sm mb-space-xs">Conflicting Customer Modifications</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+            Patrons place orders on third-party apps, then immediately WhatsApp the restaurant saying "Remove spicy peppers" or "Make it 4 parathas". The POS receives no webhook for manual messages, triggering customer complaints.
+          </p>
+<div class="bg-surface p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm text-outline flex items-center justify-between">
+<span class="text-on-surface font-semibold">Daily Impact:</span>
+<span class="text-amber-800 font-medium">42% of 1-star reviews</span>
+</div>
+</div>
+<!-- Card 3: Unverified Kitchen Instructions -->
+<div class="feature-sheen-card bg-surface-container-lowest hairline-border rounded-lg p-space-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-primary hairline-border border-primary-fixed-dim flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined fill-icon">soup_kitchen</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-primary bg-surface-container-low px-space-xs py-space-xxs rounded">DISPATCH CHAOS</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mt-space-sm mb-space-xs">Unverified Kitchen Instructions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+            Head chefs cook according to whatever ticket printed first. When a modified ticket arrives 5 minutes later, line cooks have already prepared superseded food, creating direct inventory loss and dispute delays.
+          </p>
+<div class="bg-surface p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm text-outline flex items-center justify-between">
+<span class="text-on-surface font-semibold">Daily Impact:</span>
+<span class="text-primary font-medium">12+ min resolution loss</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. HOW IT WORKS (THREE-STEP PIPELINE) -->
+<section class="py-space-3xl bg-surface-container-lowest border-b border-outline-variant/30" id="how-it-works">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<div class="text-center max-w-2xl mx-auto mb-space-2xl">
+<span class="font-mono-data-sm text-mono-data-sm text-primary uppercase font-semibold">ARCHITECTURE PIPELINE</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mt-space-xs">
+          High-Velocity Omnichannel Reconciliation
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Designed for enterprise cloud kitchens and QSR franchises handling hundreds of concurrent orders.
+        </p>
+</div>
+<!-- Three Horizontal Cards with Interactive Tabs -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg relative">
+<!-- Step 1 -->
+<div class="feature-sheen-card bg-surface hairline-border rounded-xl p-space-lg relative flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-mono-data-lg text-mono-data-lg font-bold text-primary">01 — Ingest</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">input</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Universal Aggregation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Receive and normalize raw order events across Swiggy, Zomato, WhatsApp, and on-prem POS in sub-50ms via real-time webhooks and edge listeners.
+            </p>
+</div>
+<div class="space-y-space-xs pt-space-sm border-t border-outline-variant/30">
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>FORMAT NORMALIZATION</span>
+<span class="text-on-surface font-medium">Auto-Standardized</span>
+</div>
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>INGEST SPEED</span>
+<span class="text-primary font-semibold">&lt; 45ms P99</span>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="feature-sheen-card bg-surface hairline-border rounded-xl p-space-lg relative flex flex-col justify-between group border-primary/20">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-mono-data-lg text-mono-data-lg font-bold text-primary">02 — Reconcile</span>
+<span class="material-symbols-outlined text-primary fill-icon">hub</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Entity Matching Engine</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Temporal and entity AI models match related records using customer contact heuristics, order windows, and identify quantity or item instruction conflicts.
+            </p>
+</div>
+<div class="space-y-space-xs pt-space-sm border-t border-outline-variant/30">
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>SIMILARITY RESOLVER</span>
+<span class="text-on-surface font-medium">Vector + Phonetic</span>
+</div>
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>CONFLICT DETECTION</span>
+<span class="text-primary font-semibold">100% Deterministic</span>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="feature-sheen-card bg-surface hairline-border rounded-xl p-space-lg relative flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-mono-data-lg text-mono-data-lg font-bold text-primary">03 — Verify</span>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Human-in-the-Loop Audit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Human-in-the-loop controls allow operational staff to approve the verified master order or trigger auto-rules before kitchen ticket printing.
+            </p>
+</div>
+<div class="space-y-space-xs pt-space-sm border-t border-outline-variant/30">
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>DISPATCH ASSURANCE</span>
+<span class="text-on-surface font-medium">Zero Double-Punch</span>
+</div>
+<div class="flex items-center justify-between text-mono-data-sm text-outline">
+<span>AUDIT TRACE</span>
+<span class="text-primary font-semibold">Immutable Hash</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. INTERACTIVE CONFLICT DEMONSTRATION MODULE -->
+<section class="py-space-3xl bg-surface border-b border-outline-variant/30" id="interactive-demo">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl">
+<div>
+<span class="font-mono-data-sm text-mono-data-sm text-primary uppercase font-semibold">HANDS-ON SIMULATION</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mt-space-xs">
+            Interactive Demonstration: Resolve a Live Conflict
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+            Click any button below to test how an operator resolves a live conflict when WhatsApp and Zomato payloads clash.
+          </p>
+</div>
+<div class="mt-space-md md:mt-0 flex items-center gap-2">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xxs rounded bg-secondary-container text-on-secondary-container font-mono-data-sm text-mono-data-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+  SIMULATED OPERATOR CONSOLE
+</span>
+</div>
+</div>
+<!-- Live Interactive Widget -->
+<div class="bg-surface-container-lowest hairline-border rounded-xl shadow-md p-space-lg md:p-space-xl relative overflow-hidden">
+<!-- Micro Sparkle Badge container (animates on clicks) -->
+<div class="absolute top-4 right-4" id="sparkle-container"></div>
+<!-- Two Source Columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-lg">
+<!-- Source A -->
+<div class="p-space-md bg-surface rounded-lg hairline-border hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-red-600">storefront</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Source A (Zomato Payload)</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">TOKEN #ZM-984</span>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<div class="flex justify-between font-body-sm">
+<span>2x Paneer Tikka Rolls</span>
+<span class="font-mono-data-md" id="src-a-amount">₹520.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-outline">
+<span>Taxes &amp; GST (5%)</span>
+<span class="font-mono-data-md">₹26.00</span>
+</div>
+<div class="flex justify-between font-body-sm font-semibold border-t border-outline-variant/30 pt-1">
+<span>Total Reported</span>
+<span class="font-mono-data-md">₹546.00</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded font-mono-data-sm text-mono-data-sm text-outline flex justify-between items-center">
+<span>Status: Webhook Received</span>
+<span class="text-emerald-700 bg-emerald-50 px-1.5 rounded text-[10px]">VERIFIED GATEWAY</span>
+</div>
+</div>
+<!-- Source B -->
+<div class="p-space-md bg-surface rounded-lg hairline-border hover:border-outline-variant transition-colors">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-emerald-600">smartphone</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Source B (WhatsApp Chat Event)</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline">WA-MSG-4401</span>
+</div>
+<div class="space-y-space-xs mb-space-md">
+<div class="p-space-xs bg-emerald-50 rounded text-emerald-900 font-body-sm italic hairline-border border-emerald-200">
+  "Bhaiya make it 3 rolls instead of 2. I will pay extra on delivery!"
+</div>
+<div class="flex justify-between font-body-sm font-semibold pt-1">
+<span>Derived Total (3x Rolls)</span>
+<span class="font-mono-data-md text-emerald-700" id="src-b-amount">₹780.00</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-xs rounded font-mono-data-sm text-mono-data-sm text-outline flex justify-between items-center">
+<span>Status: AI Extracted Intent</span>
+<span class="text-primary bg-primary-fixed/30 px-1.5 rounded text-[10px]">CONFIDENCE: 99.4%</span>
+</div>
+</div>
+</div>
+<!-- Discrepancy Detection Banner -->
+<div class="bg-surface-container-low hairline-border rounded-lg p-space-md mb-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Detected Conflict: Modification Window Collision</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The customer contacted on WhatsApp within 90s of Zomato checkout. Choose operator action:</p>
+</div>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-primary font-bold bg-surface-container-lowest px-space-sm py-1 rounded hairline-border">
+  AI Recommendation: Apply Update
+</span>
+</div>
+<!-- Operator Action Buttons (Interactive) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm mb-space-lg">
+<button class="px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-primary-container text-on-primary hover:bg-primary transition-all text-center hairline-border border-primary shadow-sm active:scale-95 cursor-pointer font-medium" id="btn-update" onclick="simulateResolution('update')">
+  Confirm Update (3 Rolls)
+</button>
+<button class="px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all text-center hairline-border active:scale-95 cursor-pointer" id="btn-duplicate" onclick="simulateResolution('duplicate')">
+  Reject WhatsApp Mod (Keep 2)
+</button>
+<button class="px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all text-center hairline-border active:scale-95 cursor-pointer" id="btn-separate" onclick="simulateResolution('separate')">
+  Keep As 2 Separate Orders
+</button>
+<button class="px-space-md py-space-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-error hover:bg-error-container/30 transition-all text-center hairline-border border-red-200 active:scale-95 cursor-pointer" id="btn-flag" onclick="simulateResolution('flag')">
+  Flag For Manager Audit
+</button>
+</div>
+<!-- Explanatory Real-Time Feedback Panel with dynamic calculation metrics -->
+<div class="p-space-md bg-surface rounded-lg hairline-border border-primary/40 transition-all shadow-sm" id="demo-feedback-panel">
+<div class="flex items-center justify-between mb-space-xs flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary fill-icon" id="feedback-icon">check_circle</span>
+<span class="font-label-md text-label-md font-bold text-primary" id="feedback-title">Resolution Action Applied: Canonical Order Updated</span>
+</div>
+<span class="font-mono-data-sm text-mono-data-sm text-outline" id="feedback-timestamp">ACTION LOGGED JUST NOW</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm" id="feedback-body">
+  Verified Canonical Ticket re-calculated with 3x Paneer Tikka Rolls (₹780). Kitchen Ticket KOT-381 dispatched to line display. Customer notified via WhatsApp automated confirmation link.
+</p>
+<!-- Dynamic Financial & Ticket Status Bar -->
+<div class="pt-space-xs border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-2 font-mono-data-sm text-mono-data-sm" id="feedback-stats">
+<div class="flex items-center gap-2">
+<span class="text-outline">FINAL KOT TOTAL:</span>
+<span class="font-bold text-primary text-[14px]" id="stat-total">₹840.00</span>
+<span class="text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded" id="stat-delta">Delta: +₹260 (WhatsApp Paid on COD)</span>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span>KOT STATUS:</span>
+<span class="font-bold text-emerald-700" id="stat-kot">DISPATCHED TO LINE #1</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. CORE FEATURE MATRIX -->
+<section class="py-space-3xl bg-surface-container-lowest border-b border-outline-variant/30" id="features">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<div class="max-w-2xl mb-space-2xl">
+<span class="font-mono-data-sm text-mono-data-sm text-primary uppercase font-semibold">ENTERPRISE RECONCILIATION</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mt-space-xs">
+          Engineered for Zero Kitchen Discrepancies
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Built specifically for the nuances of omnichannel dining: street addresses, multilingual chat notes, and fluctuating inventory.
+        </p>
+</div>
+<!-- Feature Bento Grid with Hover Spotlight Glow -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Feature 1: Contextual Duplicate Detection -->
+<div class="feature-sheen-card bg-surface rounded-xl hairline-border p-space-lg flex flex-col justify-between group cursor-default">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined fill-icon">call_split</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Contextual Duplicate Detection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Triangulates identical patron phone digits, GPS drop-off pins, and order timestamps across Swiggy and Zomato to flag accidental double-taps within a 5-minute sliding window.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm flex items-center justify-between text-outline">
+<span>GEO-HASH CORRELATION</span>
+<span class="text-primary font-medium">Radius &lt; 35m Match</span>
+</div>
+</div>
+<!-- Feature 2: Multilingual AI Understanding -->
+<div class="feature-sheen-card bg-surface rounded-xl hairline-border p-space-lg flex flex-col justify-between group cursor-default">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined fill-icon">translate</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Multilingual AI Understanding</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Naturally parses Hinglish ("Mirchi bilkul mat daalna bhai"), regional colloquialisms, Hindi audio voice notes, and WhatsApp emojis to format structured POS modifiers.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm flex items-center justify-between text-outline">
+<span>NLP MODIFIER ENGINE</span>
+<span class="text-primary font-medium">99.2% Accuracy on Hinglish</span>
+</div>
+</div>
+<!-- Feature 3: Strict Quantity Protection -->
+<div class="feature-sheen-card bg-surface rounded-xl hairline-border p-space-lg flex flex-col justify-between group cursor-default">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined fill-icon">shield</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Strict Quantity Protection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Prevents autonomous merging whenever quantities or unit amounts diverge beyond configured risk thresholds. Ensures operators maintain financial reconciliation sovereignty.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm flex items-center justify-between text-outline">
+<span>AUDIT THRESHOLD</span>
+<span class="text-primary font-medium">Customizable Delta Rules</span>
+</div>
+</div>
+<!-- Feature 4: Explainable Order History & Audit Trail -->
+<div class="feature-sheen-card bg-surface rounded-xl hairline-border p-space-lg flex flex-col justify-between group cursor-default">
+<div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined fill-icon">history_edu</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-space-xs">Explainable Order History &amp; Audit Trail</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+              Every decision creates an immutable log entry. See which staff member or AI rule altered a line item, complete with millisecond timestamps and source webhooks for payout audits.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded hairline-border font-mono-data-sm text-mono-data-sm flex items-center justify-between text-outline">
+<span>AGGREGATOR DISPUTES</span>
+<span class="text-primary font-medium">Export Ready for Reconciliation</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. CLOSING CTA BANNER -->
+<section class="py-space-3xl bg-surface relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<div class="bg-primary-container text-on-primary rounded-2xl p-space-xl md:p-space-3xl relative overflow-hidden shadow-xl">
+<!-- Decorative grid overlay -->
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="relative z-10 max-w-3xl">
+<span class="inline-block px-space-sm py-1 bg-surface-container-lowest/20 backdrop-blur rounded font-mono-data-sm text-mono-data-sm text-on-primary mb-space-md">
+  DEPLOYABLE IN UNDER 24 HOURS
+</span>
+<h2 class="font-headline-xl md:text-[40px] md:leading-[48px] font-bold tracking-tight mb-space-md">
+  Make Every Order a Pakka Order.
+</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-space-2xl text-balance">
+  Bring clarity to multi-channel order operations with intelligent reconciliation and verified decisions. Eliminate double tickets, protect customer trust, and streamline your kitchen workflow.
+</p>
+<div class="flex flex-wrap items-center gap-space-md">
+<button class="btn-shimmer h-11 px-space-xl bg-surface-container-lowest text-primary hover:bg-surface-container-low font-label-md text-label-md rounded-lg inline-flex items-center gap-space-sm transition-all shadow-md active:scale-95 font-semibold">
+<span>Open Operator Console</span>
+<span class="material-symbols-outlined text-[18px]">launch</span>
+</button>
+<button class="h-11 px-space-xl bg-primary-container hover:bg-primary text-on-primary hairline-border border-white/30 font-label-md text-label-md rounded-lg inline-flex items-center gap-space-sm transition-all">
+<span>Talk to Restaurant Solutions Lead</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. ENTERPRISE FOOTER -->
+<footer class="bg-surface-container-lowest hairline-border border-x-0 border-b-0 py-space-2xl">
+<div class="max-w-7xl mx-auto px-space-md md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-xl mb-space-2xl">
+<!-- Col 1: Brand Info -->
+<div class="md:col-span-2 space-y-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined fill-icon text-[16px]">auto_awesome</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface">PakkaOrder AI</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">
+  Autonomous order reconciliation &amp; verification intelligence engineered for high-throughput restaurant operators across India and Southeast Asia.
+</p>
+<div class="inline-flex items-center gap-space-xs font-mono-data-sm text-mono-data-sm text-primary bg-surface-container-low px-space-sm py-1 rounded hairline-border">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>All Systems Operational • 99.99% Uptime</span>
+</div>
+</div>
+<!-- Col 2: Product Pillars -->
+<div class="space-y-space-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Product Pillars</h4>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Omnichannel Ingestion</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Conflict Diff Viewer</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">POS Direct Dispatch</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Audit Trail Logs</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Hinglish Parser</a></li>
+</ul>
+</div>
+<!-- Col 3: Integrations -->
+<div class="space-y-space-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Supported Integrations</h4>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Zomato Merchant Webhooks</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Swiggy Partner Connect</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">WhatsApp Cloud API</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Petpooja POS Connector</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">UrbanPiper Kitchen Hub</a></li>
+</ul>
+</div>
+<!-- Col 4: Trust & Legal -->
+<div class="space-y-space-sm">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Enterprise Trust</h4>
+<ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Security Whitepaper</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">SOC-2 Readiness</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Compliance</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-space-lg border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-space-sm text-mono-data-sm text-mono-data-sm text-outline">
+<div>
+  © 2025 PakkaOrder AI Technologies Inc. All rights reserved.
+</div>
+<div class="flex items-center gap-space-lg">
+<span>Connaught Place Central • Hub #04</span>
+<span>ISO 27001 Certified Infrastructure</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+    // 1. Live stream counter simulation in header chip
+    let streamRate = 48;
+    setInterval(() => {
+      streamRate = Math.floor(42 + Math.random() * 14);
+      const el = document.getElementById('hero-stream-counter');
+      if (el) el.innerText = `Live Ingestion: ${streamRate} ev/s`;
+    }, 2800);
+
+    // 2. Interactive Voice Note Player in Hero
+    let isVoicePlaying = false;
+    let voiceInterval = null;
+    function toggleHeroVoiceNote() {
+      const icon = document.getElementById('voice-play-icon');
+      const text = document.getElementById('voice-status-text');
+      const container = document.getElementById('waveform-container');
+      const bars = container.querySelectorAll('span');
+
+      isVoicePlaying = !isVoicePlaying;
+      if (isVoicePlaying) {
+        icon.innerText = 'pause';
+        text.innerText = 'Transcribing: "Bhaiya 3 rolls kar do..."';
+        bars.forEach((b, i) => {
+          b.classList.add('wave-bar', `wave-bar-${(i % 7) + 1}`);
+        });
+        // Auto-pause after 4 seconds
+        clearTimeout(voiceInterval);
+        voiceInterval = setTimeout(() => {
+          if (isVoicePlaying) toggleHeroVoiceNote();
+        }, 4000);
+      } else {
+        icon.innerText = 'play_arrow';
+        text.innerText = 'Click to listen waveform';
+        bars.forEach(b => {
+          b.className = 'w-1 bg-emerald-600 rounded-full h-3';
+        });
+      }
+    }
+
+    // 3. Hero Simulation Re-runner
+    function runHeroSimulation() {
+      const spin = document.getElementById('hero-sim-spin');
+      const btnText = document.getElementById('hero-sim-btn-text');
+      const bar = document.getElementById('hero-confidence-bar');
+      const num = document.getElementById('hero-confidence-num');
+      const latencyBadge = document.getElementById('hero-latency-badge');
+
+      spin.style.display = 'inline-block';
+      btnText.innerText = 'Reconciling...';
+      bar.style.width = '75%';
+      num.innerText = '82.4%';
+
+      setTimeout(() => {
+        bar.style.width = '91.2%';
+        num.innerText = '91.2%';
+        latencyBadge.innerText = 'LATENCY: 24ms';
+      }, 400);
+
+      setTimeout(() => {
+        bar.style.width = '99.8%';
+        num.innerText = '99.8%';
+        spin.style.display = 'none';
+        btnText.innerText = 'Re-run Live Match';
+        latencyBadge.innerText = 'LATENCY: 38ms';
+      }, 950);
+    }
+
+    // 4. Hero Print KOT feedback
+    function triggerPrintNotification() {
+      const btn = document.getElementById('hero-print-btn');
+      const label = document.getElementById('hero-print-btn-label');
+      const original = label.innerText;
+      label.innerText = 'Dispatched to Kitchen Line ✓';
+      btn.classList.add('bg-emerald-700');
+      setTimeout(() => {
+        label.innerText = original;
+        btn.classList.remove('bg-emerald-700');
+      }, 2500);
+    }
+
+    // 5. Interactive Demo Section Resolution Simulator
+    function simulateResolution(action) {
+      const titleEl = document.getElementById('feedback-title');
+      const bodyEl = document.getElementById('feedback-body');
+      const iconEl = document.getElementById('feedback-icon');
+      const timeEl = document.getElementById('feedback-timestamp');
+      const panel = document.getElementById('demo-feedback-panel');
+      const statTotal = document.getElementById('stat-total');
+      const statDelta = document.getElementById('stat-delta');
+      const statKot = document.getElementById('stat-kot');
+      const sparkleContainer = document.getElementById('sparkle-container');
+
+      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      timeEl.innerText = 'ACTION LOGGED AT ' + now;
+
+      // Reset button styles
+      ['btn-update', 'btn-duplicate', 'btn-separate', 'btn-flag'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.classList.remove('ring-2', 'ring-primary', 'bg-primary-container', 'text-on-primary', 'bg-error', 'text-on-error', 'bg-surface-container');
+        btn.classList.add('bg-surface-container-lowest');
+        if (id === 'btn-flag') {
+          btn.classList.add('text-error');
+        } else {
+          btn.classList.add('text-on-surface');
+        }
+      });
+
+      // Show tiny sparkle feedback chip
+      sparkleContainer.innerHTML = `
+        <div class="sparkle-pop bg-emerald-100 text-emerald-800 text-[11px] font-mono-data-sm px-2.5 py-1 rounded-full border border-emerald-300 shadow-sm flex items-center gap-1">
+          <span class="material-symbols-outlined text-[13px] text-emerald-700">bolt</span> Decision Dispatched!
+        </div>
+      `;
+      setTimeout(() => {
+        sparkleContainer.innerHTML = '';
+      }, 2000);
+
+      if (action === 'update') {
+        const activeBtn = document.getElementById('btn-update');
+        activeBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+        activeBtn.classList.add('bg-primary-container', 'text-on-primary');
+
+        iconEl.innerText = 'check_circle';
+        iconEl.className = 'material-symbols-outlined text-primary fill-icon';
+        titleEl.innerText = 'Resolution Applied: WhatsApp Modification Confirmed';
+        titleEl.className = 'font-label-md text-label-md font-bold text-primary';
+        bodyEl.innerText = 'Canonical Master Order updated to 3x Paneer Tikka Rolls (₹780). Aggregator reconciliation delta recorded. KOT kitchen ticket re-dispatched.';
+        panel.className = 'p-space-md bg-surface rounded-lg hairline-border border-primary transition-all shadow-sm';
+        
+        statTotal.innerText = '₹840.00';
+        statDelta.className = 'text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded';
+        statDelta.innerText = 'Delta: +₹260 (WhatsApp Paid on COD)';
+        statKot.innerText = 'DISPATCHED TO LINE #1';
+        statKot.className = 'font-bold text-emerald-700';
+
+      } else if (action === 'duplicate') {
+        const activeBtn = document.getElementById('btn-duplicate');
+        activeBtn.classList.remove('bg-surface-container-lowest');
+        activeBtn.classList.add('bg-surface-container', 'font-semibold');
+
+        iconEl.innerText = 'cancel';
+        iconEl.className = 'material-symbols-outlined text-amber-600 fill-icon';
+        titleEl.innerText = 'Resolution Applied: Mod Rejected (Kept Original 2 Rolls)';
+        titleEl.className = 'font-label-md text-label-md font-bold text-amber-700';
+        bodyEl.innerText = 'WhatsApp message rejected due to line prep already in progress. Automated courtesy SMS sent to patron explaining the order lock.';
+        panel.className = 'p-space-md bg-amber-50/50 rounded-lg hairline-border border-amber-300 transition-all shadow-sm';
+
+        statTotal.innerText = '₹580.00';
+        statDelta.className = 'text-[11px] bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded';
+        statDelta.innerText = 'Delta: ₹0 (Retained Zomato Ticket)';
+        statKot.innerText = 'RETAINED ORIGINAL (2 ROLLS)';
+        statKot.className = 'font-bold text-amber-700';
+
+      } else if (action === 'separate') {
+        const activeBtn = document.getElementById('btn-separate');
+        activeBtn.classList.remove('bg-surface-container-lowest');
+        activeBtn.classList.add('bg-surface-container', 'font-semibold');
+
+        iconEl.innerText = 'call_split';
+        iconEl.className = 'material-symbols-outlined text-primary fill-icon';
+        titleEl.innerText = 'Resolution Applied: Split Into Two Distinct Orders';
+        titleEl.className = 'font-label-md text-label-md font-bold text-primary';
+        bodyEl.innerText = 'Zomato order kept as 2 rolls (₹520). A new direct WhatsApp delivery order opened for 3 additional rolls (₹780). Two independent tickets generated.';
+        panel.className = 'p-space-md bg-surface rounded-lg hairline-border border-primary transition-all shadow-sm';
+
+        statTotal.innerText = '₹580 + ₹780 = ₹1,360';
+        statDelta.className = 'text-[11px] bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded';
+        statDelta.innerText = 'Delta: +1 New Order Ticket Generated';
+        statKot.innerText = '2 DUAL TICKETS DISPATCHED';
+        statKot.className = 'font-bold text-blue-700';
+
+      } else if (action === 'flag') {
+        const activeBtn = document.getElementById('btn-flag');
+        activeBtn.classList.remove('bg-surface-container-lowest', 'text-error');
+        activeBtn.classList.add('bg-error', 'text-on-error');
+
+        iconEl.innerText = 'flag';
+        iconEl.className = 'material-symbols-outlined text-error fill-icon';
+        titleEl.innerText = 'Resolution Applied: Escalated to Shift Manager';
+        titleEl.className = 'font-label-md text-label-md font-bold text-error';
+        bodyEl.innerText = 'Audit freeze placed on Order #PK-9821. Kitchen prep suspended. Shift lead notified on console terminal for immediate verbal verification with cashier.';
+        panel.className = 'p-space-md bg-error-container/30 rounded-lg hairline-border border-error transition-all shadow-sm';
+
+        statTotal.innerText = 'HOLD PENDING AUDIT';
+        statDelta.className = 'text-[11px] bg-red-100 text-error px-1.5 py-0.5 rounded';
+        statDelta.innerText = 'Preparation Paused';
+        statKot.innerText = 'HALTED FOR MANAGER PIN';
+        statKot.className = 'font-bold text-error';
+      }
+    }
+  </script>
+</body></html>

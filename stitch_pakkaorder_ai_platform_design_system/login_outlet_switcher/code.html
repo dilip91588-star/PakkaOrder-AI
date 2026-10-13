@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In • PakkaOrder AI</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed": "#abefe8",
+            "on-background": "#0b1c30",
+            "surface-bright": "#f8f9ff",
+            "surface-variant": "#d3e4fe",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#c5f3ea",
+            "surface-dim": "#cbdbf5",
+            "inverse-surface": "#213145",
+            "primary-fixed-dim": "#80d5cb",
+            "on-tertiary-fixed": "#00201c",
+            "on-tertiary-fixed-variant": "#224e47",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#00504a",
+            "on-surface-variant": "#3e4947",
+            "secondary-container": "#a8ece5",
+            "secondary-fixed-dim": "#8fd3cc",
+            "surface-container-highest": "#d3e4fe",
+            "secondary": "#216963",
+            "surface": "#f8f9ff",
+            "outline": "#6e7977",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#266d68",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#2d5951",
+            "tertiary-fixed-dim": "#a2d0c6",
+            "on-primary-fixed": "#00201d",
+            "primary-container": "#0f766e",
+            "on-primary-container": "#a3faef",
+            "on-surface": "#0b1c30",
+            "outline-variant": "#bdc9c6",
+            "background": "#f8f9ff",
+            "surface-tint": "#006a63",
+            "surface-container-low": "#eff4ff",
+            "error": "#ba1a1a",
+            "tertiary-container": "#467169",
+            "inverse-on-surface": "#eaf1ff",
+            "primary": "#005c55",
+            "on-secondary-fixed-variant": "#00504b",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#bdece2",
+            "inverse-primary": "#80d5cb",
+            "primary-fixed": "#9cf2e8",
+            "on-secondary-fixed": "#00201e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "margin-desktop": "2rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-xxs": "0.125rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-data-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data-md": ["JetBrains Mono"],
+            "body-md": ["Inter"],
+            "mono-data-sm": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "mono-data-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "mono-data-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="h-full bg-surface text-on-surface antialiased font-body-md select-none">
+<!-- Semantic Shell Exclusion: Transactional Login route (/login) suppresses the persistent SideNav and TopNav per Semantic Shell Mandate -->
+<div class="min-h-screen w-full flex flex-col lg:flex-row">
+<!-- LEFT PANEL: Brand Anchor & Operational Stream Convergence -->
+<div class="relative w-full lg:w-1/2 p-space-xl lg:p-space-3xl flex flex-col justify-between bg-surface-container-lowest border-b lg:border-b-0 lg:border-r border-outline-variant/40">
+<!-- Top Brand Anchor -->
+<div class="space-y-space-xl">
+<div class="flex items-center gap-space-sm">
+<div class="h-9 w-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync_alt">sync_alt</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface">PakkaOrder AI</span>
+<span class="ml-space-xs inline-flex items-center px-1.5 py-0.5 rounded-sm text-[10px] font-mono-data-sm uppercase tracking-wider bg-secondary-container/50 text-primary font-semibold">Enterprise</span>
+</div>
+</div>
+<div class="space-y-space-xs max-w-lg">
+<h1 class="text-headline-xl-mobile lg:text-headline-xl font-headline-xl text-on-surface font-semibold tracking-tight">
+            The Intelligent Reconciliation Engine for Multi-Channel Restaurants.
+          </h1>
+<p class="text-body-md font-body-md text-on-surface-variant">
+            Many Channels. One Pakka Order.
+          </p>
+</div>
+</div>
+<!-- Mid: Interactive Stream Convergence Visualizer Card -->
+<div class="my-space-xl p-space-lg rounded-xl border border-outline-variant/40 bg-surface-container-low shadow-sm max-w-xl">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-label-md font-label-md font-medium text-on-surface">Live Ingestion Pipeline</span>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+            Reconciliation 99.8%
+          </span>
+</div>
+<!-- Flow Diagram Container -->
+<div class="py-space-md grid grid-cols-1 md:grid-cols-7 gap-space-sm items-center">
+<!-- Incoming Streams -->
+<div class="md:col-span-3 space-y-2">
+<!-- Stream 1: Swiggy -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="h-6 w-6 rounded bg-orange-100 text-orange-700 flex items-center justify-center font-mono-data-sm font-semibold text-[11px]">SW</span>
+<div>
+<p class="text-[12px] font-medium text-on-surface">Swiggy Direct API</p>
+<p class="text-mono-data-sm font-mono-data-sm text-outline">sync_ack: 24ms</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="east">east</span>
+</div>
+<!-- Stream 2: Zomato -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="h-6 w-6 rounded bg-red-100 text-red-700 flex items-center justify-center font-mono-data-sm font-semibold text-[11px]">ZM</span>
+<div>
+<p class="text-[12px] font-medium text-on-surface">Zomato Aggregator</p>
+<p class="text-mono-data-sm font-mono-data-sm text-outline">sync_ack: 31ms</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="east">east</span>
+</div>
+<!-- Stream 3: WhatsApp POS -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="h-6 w-6 rounded bg-green-100 text-green-700 flex items-center justify-center font-mono-data-sm font-semibold text-[11px]">WA</span>
+<div>
+<p class="text-[12px] font-medium text-on-surface">WhatsApp Direct POS</p>
+<p class="text-mono-data-sm font-mono-data-sm text-outline">sync_ack: 18ms</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="east">east</span>
+</div>
+</div>
+<!-- Converging Indicator -->
+<div class="md:col-span-1 flex justify-center py-2 md:py-0">
+<div class="h-7 w-7 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="hub">hub</span>
+</div>
+</div>
+<!-- Master Canonical Order -->
+<div class="md:col-span-3 p-3 rounded-lg bg-surface-container-lowest border border-primary/40 shadow-xs relative overflow-hidden">
+<div class="absolute top-0 right-0 w-12 h-12 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-[11px] font-mono-data-sm font-semibold text-primary uppercase tracking-wider">Canonical Master</span>
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="check_circle">check_circle</span>
+</div>
+<p class="text-mono-data-md font-mono-data-md font-semibold text-on-surface">ORD-#8942-MASTER</p>
+<div class="mt-2 pt-2 border-t border-outline-variant/30 flex justify-between items-center text-mono-data-sm font-mono-data-sm">
+<span class="text-on-surface-variant">KDS Synced: 3/3</span>
+<span class="text-emerald-700 font-medium">Zero Delta</span>
+</div>
+</div>
+</div>
+<!-- Savings Metric Pill -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-lowest border border-outline-variant/40 flex items-center gap-space-sm">
+<div class="h-7 w-7 rounded bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="savings">savings</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface">
+<span class="font-semibold text-emerald-700 font-mono-data-sm">₹14,200 saved</span> in kitchen food waste per outlet this month via auto-cancelled duplicate tickets.
+          </p>
+</div>
+</div>
+<!-- Bottom Compliance Certifications -->
+<div class="pt-space-md border-t border-outline-variant/30">
+<div class="flex flex-wrap items-center gap-space-md text-on-surface-variant text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified_user">verified_user</span>
+<span>SOC-2 Type II Certified</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="lock">lock</span>
+<span>Bank-Grade AES-256</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="dns">dns</span>
+<span>On-Prem POS Integration Ready</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Operator Authentication & Hub Outlet Switcher -->
+<div class="w-full lg:w-1/2 p-space-xl lg:p-space-3xl flex flex-col justify-center items-center bg-surface">
+<div class="w-full max-w-md space-y-space-xl">
+<!-- Auth Header -->
+<div class="space-y-space-xs text-left">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-lg font-headline-lg text-on-surface font-semibold tracking-tight">Welcome back</h2>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-surface-container-lowest text-on-surface-variant border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Console 2.4.1
+            </span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Sign in to your restaurant console</p>
+</div>
+<!-- Main Auth Form -->
+<form class="space-y-space-md" onsubmit="event.preventDefault();">
+<!-- Assigned Outlet / Kitchen Hub Switcher (B2B Multi-Store Requirement) -->
+<div class="space-y-space-xs">
+<label class="block text-label-md font-label-md font-medium text-on-surface" for="hub-selector">
+              Assigned Outlet / Kitchen Hub
+            </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="storefront">storefront</span>
+</div>
+<select class="w-full h-11 pl-10 pr-9 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors shadow-2xs" id="hub-selector">
+<option selected="" value="hub_04">Connaught Place Central • Hub #04 (Active)</option>
+<option value="hub_01">Cyber Hub Gurgaon • Hub #01</option>
+<option value="hub_08">Indiranagar Cloud Kitchen • Hub #08</option>
+<option value="hub_02">Koramangala Express • Hub #02</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-mono-data-sm font-mono-data-sm text-outline px-1">
+<span>Station ID: POS-DEL-CP-04</span>
+<span class="text-primary font-medium">Auto-synced</span>
+</div>
+</div>
+<!-- Work Email -->
+<div class="space-y-space-xs">
+<label class="block text-label-md font-label-md font-medium text-on-surface" for="work-email">
+              Work Email
+            </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="badge">badge</span>
+</div>
+<input class="w-full h-10 pl-10 pr-3 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors placeholder:text-outline" id="work-email" name="email" placeholder="name@restaurantchain.com" required="" type="email" value="auditor.leads@pakkaorder.internal"/>
+</div>
+</div>
+<!-- Password with Toggle -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<label class="block text-label-md font-label-md font-medium text-on-surface" for="auth-password">
+                Password
+              </label>
+<a class="text-label-sm font-label-sm text-primary hover:underline transition-all" href="#forgot">
+                Forgot password?
+              </a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="key">key</span>
+</div>
+<input class="w-full h-10 pl-10 pr-12 bg-surface-container-lowest border border-outline-variant/40 rounded-lg text-body-md font-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="auth-password" name="password" required="" type="password" value="••••••••••••••••"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-on-surface transition-colors" id="toggle-password-btn" type="button">
+<span class="text-label-sm font-label-sm font-medium mr-1" id="password-toggle-text">Show</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility" id="password-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Operator Role Indicator Badge -->
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="assignment_ind">assignment_ind</span>
+</div>
+<div class="text-left">
+<p class="text-[11px] font-mono-data-sm text-outline">Verified Access Tier</p>
+<p class="text-label-md font-label-md font-semibold text-on-surface">Shift Manager / Financial Auditor</p>
+</div>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              MFA Enforced
+            </span>
+</div>
+<!-- Workstation Checkbox -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline-variant/40 text-primary-container focus:ring-primary-container focus:ring-offset-0" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Remember this workstation</span>
+</label>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">12h shift session</span>
+</div>
+<!-- Primary CTA Button -->
+<div class="pt-2">
+<button class="w-full h-11 bg-primary-container hover:bg-primary text-on-primary font-label-md font-semibold rounded-lg shadow-sm active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[18px]" data-icon="login">login</span>
+<span>Sign In to Hub Console</span>
+</button>
+</div>
+</form>
+<!-- YubiKey / Hardware Key Override Support Note -->
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" data-icon="usb">usb</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            Hardware Key (WebAuthn / YubiKey) supported for station supervisor overrides during shift changeover.
+          </p>
+</div>
+<!-- System & Desk Support Footer -->
+<div class="pt-space-md border-t border-outline-variant/30 space-y-2 text-center">
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center gap-1.5" href="#support">
+<span class="material-symbols-outlined text-[16px]" data-icon="support_agent">support_agent</span>
+<span>Need help? Contact Restaurant Operations Desk</span>
+</a>
+<div class="flex items-center justify-center gap-2 text-mono-data-sm font-mono-data-sm text-outline">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>All systems operational • 99.99%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Micro-interactions -->
+<script>
+    const passwordInput = document.getElementById('auth-password');
+    const toggleBtn = document.getElementById('toggle-password-btn');
+    const toggleText = document.getElementById('password-toggle-text');
+    const toggleIcon = document.getElementById('password-icon');
+
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        toggleText.textContent = isPassword ? 'Hide' : 'Show';
+        toggleIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        toggleIcon.setAttribute('data-icon', isPassword ? 'visibility_off' : 'visibility');
+      });
+    }
+  </script>
+</body></html>

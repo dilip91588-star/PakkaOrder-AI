@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Ingestion Workbench — PakkaOrder AI</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed": "#abefe8",
+            "on-background": "#0b1c30",
+            "surface-bright": "#f8f9ff",
+            "surface-variant": "#d3e4fe",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#c5f3ea",
+            "surface-dim": "#cbdbf5",
+            "inverse-surface": "#213145",
+            "primary-fixed-dim": "#80d5cb",
+            "on-tertiary-fixed": "#00201c",
+            "on-tertiary-fixed-variant": "#224e47",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#00504a",
+            "on-surface-variant": "#3e4947",
+            "secondary-container": "#a8ece5",
+            "secondary-fixed-dim": "#8fd3cc",
+            "surface-container-highest": "#d3e4fe",
+            "secondary": "#216963",
+            "surface": "#f8f9ff",
+            "outline": "#6e7977",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#266d68",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#2d5951",
+            "tertiary-fixed-dim": "#a2d0c6",
+            "on-primary-fixed": "#00201d",
+            "primary-container": "#0f766e",
+            "on-primary-container": "#a3faef",
+            "on-surface": "#0b1c30",
+            "outline-variant": "#bdc9c6",
+            "background": "#f8f9ff",
+            "surface-tint": "#006a63",
+            "surface-container-low": "#eff4ff",
+            "error": "#ba1a1a",
+            "tertiary-container": "#467169",
+            "inverse-on-surface": "#eaf1ff",
+            "primary": "#005c55",
+            "on-secondary-fixed-variant": "#00504b",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#bdece2",
+            "inverse-primary": "#80d5cb",
+            "primary-fixed": "#9cf2e8",
+            "on-secondary-fixed": "#00201e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-3xl": "3rem",
+            "space-2xl": "2rem",
+            "margin-desktop": "2rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "1rem",
+            "space-xxs": "0.125rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "0.75rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-data-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data-md": ["JetBrains Mono"],
+            "body-md": ["Inter"],
+            "mono-data-sm": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "mono-data-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "mono-data-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="h-full font-body-md text-on-surface bg-background flex flex-col overflow-hidden antialiased">
+<!-- Fixed SideNavBar (Shared Component) -->
+<aside class="fixed inset-y-0 left-0 w-64 z-40 flex flex-col justify-between p-space-md bg-surface-container-lowest border-r border-outline-variant/40">
+<div class="flex flex-col gap-space-lg">
+<!-- Outlet Header -->
+<div class="flex items-center gap-space-sm px-space-xs py-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-sm font-semibold tracking-tight shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-tight text-on-surface truncate">PakkaOrder AI</span>
+<span class="text-body-sm font-body-sm text-outline truncate">Connaught Place Central • Hub #04</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-space-xxs">
+<!-- Exact Labels from JSON: Reconciliation, Omnichannel Live, Channel Audits, Discrepancies, Analytics, Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="sync_alt">sync_alt</span>
+<span class="text-label-md font-label-md">Reconciliation</span>
+</a>
+<!-- Omnichannel Live (Active state mapped to real-time ingestion workbench context) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-surface-container-low text-primary font-semibold rounded-lg border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined text-primary fill-1" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-md font-label-md">Omnichannel Live</span>
+<span class="ml-auto flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="hub">hub</span>
+<span class="text-label-md font-label-md">Channel Audits</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="rule">rule</span>
+<span class="text-label-md font-label-md">Discrepancies</span>
+<span class="ml-auto bg-error-container text-on-error-container text-mono-data-sm font-mono-data-sm px-1.5 py-0.5 rounded border border-error/20">3</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-outline" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom Utilities & Actions -->
+<div class="flex flex-col gap-space-sm pt-space-md border-t border-outline-variant/30">
+<button class="w-full h-9 bg-primary-container hover:bg-primary text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center gap-space-xs transition-colors shadow-sm active:scale-[0.99]">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_awesome">auto_awesome</span>
+<span>Resolve Batch (14)</span>
+</button>
+<div class="flex flex-col gap-space-xxs pt-space-xs">
+<a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm rounded transition-colors" href="#">
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="history">history</span>
+<span>Audit Trail</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface-variant hover:text-on-surface text-body-sm font-body-sm rounded transition-colors" href="#">
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="dns">dns</span>
+<span>Terminal Status</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-emerald-500"></span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Viewport wrapper shifted right for fixed sidebar -->
+<div class="pl-64 flex flex-col h-full w-full overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 z-30 flex items-center justify-between w-full h-14 px-space-xl bg-surface-container-lowest border-b border-outline-variant/40 shrink-0">
+<div class="flex items-center gap-space-xl">
+<!-- Search Bar on Left -->
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[16px]" data-icon="search">search</span>
+<input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm rounded-lg bg-surface border border-outline-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-all placeholder:text-outline/70" placeholder="Search order hash, customer phone, SKU..." type="text"/>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-space-lg text-body-sm font-body-sm">
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">All Outlets</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Swiggy</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Zomato</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-space-xs" href="#">WhatsApp POS</a>
+</nav>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-space-md">
+<!-- Icon Actions from JSON -->
+<div class="flex items-center gap-1 border-r border-outline-variant/40 pr-space-md">
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications_active">notifications_active</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-error"></span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" title="Gateway Sync">
+<span class="material-symbols-outlined text-[18px]" data-icon="wifi_tethering">wifi_tethering</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded hover:bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors" title="Reconciliation Balance">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+</div>
+<!-- Trailing Buttons -->
+<button class="h-8 px-3 rounded-lg border border-outline-variant/60 text-on-surface hover:bg-surface-container-low text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="file_download">file_download</span>
+<span>Export Audit</span>
+</button>
+<button class="h-8 px-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container text-label-md font-label-md flex items-center gap-1.5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="cached">cached</span>
+<span>Force Resync</span>
+</button>
+<!-- Lead Auditor Avatar -->
+<div class="flex items-center gap-2 pl-space-xs">
+<div class="w-8 h-8 rounded-full border border-outline-variant/50 bg-surface-container flex items-center justify-center text-primary font-label-md font-semibold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a senior financial operations manager in a high-tech modern command center with calm soft studio illumination and sharp tailored dark attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNNGyWy0c2OuFhK10tEGFwYTPbzMcgKD9QKUG--Sp9DQ-Qfm-UgLpe8zrsUbY3h1GezgXyAYBI7rIw5La8NnGGVSgcsF9wko7LkmoKZy9Co1FP5NPIb3anlZihyzPAeYjHrOgiAITrJzwqmkQ8_e5Ep2TNG3I69DyTzKURzQ66HZErOUesW3MSLjziog1cNdHElQbrqkl-eoT26QOroEarRoPpgqR5MXS5ySsuMOMnnlqXiIuDmTFWOQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-space-2xl py-space-xl flex flex-col gap-space-xl">
+<!-- Breadcrumb and Page Header -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-mono-data-sm font-mono-data-sm text-outline">
+<span class="hover:text-on-surface cursor-pointer">CP-CENTRAL #04</span>
+<span>/</span>
+<span class="hover:text-on-surface cursor-pointer">INGESTION ENGINE</span>
+<span>/</span>
+<span class="text-primary font-medium">ROUTER /IMPORTS</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<h1 class="text-headline-lg font-headline-lg font-semibold tracking-tight text-on-surface">AI Ingestion Workbench</h1>
+<p class="text-body-md font-body-md text-outline mt-0.5 max-w-3xl">Extract, normalize, and parse conversational customer audio/messages, CSV imports, and direct POS payloads into canonical orders.</p>
+</div>
+<!-- Live Channel Health Metrics -->
+<div class="flex items-center gap-space-md bg-surface-container-lowest border border-outline-variant/40 rounded-lg px-space-md py-space-xs shrink-0 shadow-sm">
+<div class="flex flex-col">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Ingestion Engine</span>
+<span class="text-label-md font-label-md font-semibold text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active (v3.2)
+              </span>
+</div>
+<div class="w-px h-6 bg-outline-variant/40"></div>
+<div class="flex flex-col">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Parsing Accuracy</span>
+<span class="text-mono-data-md font-mono-data-md font-semibold text-on-surface">99.1%</span>
+</div>
+<div class="w-px h-6 bg-outline-variant/40"></div>
+<div class="flex flex-col">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Pipeline Latency</span>
+<span class="text-mono-data-md font-mono-data-md font-medium text-emerald-700">42ms P99</span>
+</div>
+</div>
+</div>
+<!-- Main Navigation Tabs -->
+<div class="flex items-center gap-space-lg border-b border-outline-variant/40 pt-space-md">
+<button class="text-label-md font-label-md font-semibold text-primary border-b-2 border-primary pb-space-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic">mic</span>
+<span>Conversational &amp; Audio AI</span>
+<span class="px-1.5 py-0.2 bg-secondary-fixed text-secondary text-mono-data-sm font-mono-data-sm rounded">Live</span>
+</button>
+<button class="text-label-md font-label-md text-outline hover:text-on-surface pb-space-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload_file">upload_file</span>
+<span>Batch CSV Upload</span>
+</button>
+<button class="text-label-md font-label-md text-outline hover:text-on-surface pb-space-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+<span>Manual POS &amp; Raw Webhook Entry</span>
+</button>
+</div>
+</section>
+<!-- Conversational AI Workbench Layout (Split View Bento Grid) -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-xl items-start">
+<!-- Left Panel: Customer Input & Voice Audio Stream (5 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<h2 class="text-headline-sm font-headline-sm font-semibold text-on-surface">Customer Input &amp; Voice Audio Stream</h2>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm text-outline bg-surface px-2 py-0.5 rounded border border-outline-variant/30">STREAM #AUD-9942</span>
+</div>
+<!-- Channel Source Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface-variant flex items-center justify-between">
+<span>Channel Source Gateway</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Direct Webhook Ingest</span>
+</label>
+<div class="relative">
+<select class="w-full h-9 pl-3 pr-8 text-body-md font-body-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg appearance-none focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors">
+<option selected="">WhatsApp Business API (+91-CP-CENTRAL)</option>
+<option>Direct Phone Call / IVR (Twilio SIP)</option>
+<option>Telegram Bot (@PakkaOrderConnaughtBot)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Audio Waveform Player Card -->
+<div class="bg-surface rounded-lg border border-outline-variant/50 p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<button class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[20px] fill-1" data-icon="play_arrow">play_arrow</span>
+</button>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md font-semibold text-on-surface">Voice Note (0:14s)</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Rahul Sharma (+91 98110-XXXXX)</span>
+</div>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm text-primary font-medium bg-secondary-fixed/50 px-2 py-0.5 rounded">OGG / Opus 16kHz</span>
+</div>
+<!-- Visual Waveform Graphic -->
+<div class="h-12 w-full bg-surface-container-lowest rounded border border-outline-variant/30 flex items-center justify-between px-3 gap-0.5">
+<div class="w-1 h-3 bg-primary rounded-full"></div>
+<div class="w-1 h-5 bg-primary rounded-full"></div>
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div class="w-1 h-10 bg-primary-container rounded-full"></div>
+<div class="w-1 h-6 bg-primary-container rounded-full"></div>
+<div class="w-1 h-9 bg-primary-container rounded-full"></div>
+<div class="w-1 h-7 bg-primary-container rounded-full"></div>
+<div class="w-1 h-10 bg-primary rounded-full"></div>
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div class="w-1 h-4 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-6 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-8 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-9 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-5 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-7 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-3 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-2 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-4 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-6 bg-outline-variant rounded-full"></div>
+<div class="w-1 h-3 bg-outline-variant rounded-full"></div>
+</div>
+<div class="flex items-center justify-between text-mono-data-sm font-mono-data-sm text-outline px-1">
+<span>0:07 played</span>
+<span>-0:07 remaining</span>
+</div>
+</div>
+<!-- Audio Transcription Block -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="transcribe">transcribe</span>
+<span>ASR Acoustic Transcription (Hindi / Hinglish Model)</span>
+</label>
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700">Confidence: 99.4%</span>
+</div>
+<div class="p-space-md bg-surface rounded-lg border border-outline-variant/60 font-mono-data-md text-on-surface leading-relaxed text-body-md select-text">
+              “Bhaiya 2 paneer tikka butter roll aur 1 diet coke bhej do jaldi se, extra green chutney daalna mat bhulna.”
+            </div>
+</div>
+<!-- Manual Testing & Message Override Input -->
+<div class="flex flex-col gap-1.5">
+<label class="text-label-md font-label-md text-on-surface-variant flex items-center justify-between">
+<span>Manual Testing / Text Stream Override</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Simulate Ingest</span>
+</label>
+<textarea class="w-full p-space-sm text-body-md font-body-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors placeholder:text-outline/60 resize-none" placeholder="Type or paste conversational message in Hindi, Hinglish, or English..." rows="3">Bhaiya 2 paneer tikka butter roll aur 1 diet coke bhej do jaldi se, extra green chutney daalna mat bhulna.</textarea>
+</div>
+<!-- Primary Extraction Trigger -->
+<div class="flex items-center gap-space-md pt-space-xs">
+<button class="flex-1 h-10 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="psychology">psychology</span>
+<span>Extract with AI (Model v3.2 Multilingual)</span>
+</button>
+<div class="flex flex-col items-end px-2">
+<span class="text-mono-data-sm font-mono-data-sm font-semibold text-emerald-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span> 42ms P99
+              </span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">0 Tokens Billed</span>
+</div>
+</div>
+<!-- Audio Metadata Inspector -->
+<div class="pt-space-sm border-t border-outline-variant/30 grid grid-cols-3 gap-space-sm text-mono-data-sm font-mono-data-sm text-outline">
+<div>
+<span class="block text-body-sm text-on-surface-variant font-medium">Codec</span>
+<span>OPUS/48000</span>
+</div>
+<div>
+<span class="block text-body-sm text-on-surface-variant font-medium">Payload Size</span>
+<span>28.4 KB</span>
+</div>
+<div>
+<span class="block text-body-sm text-on-surface-variant font-medium">Inbound Port</span>
+<span>SSL:443 (Gupshup)</span>
+</div>
+</div>
+</div>
+<!-- Right Panel: Structured Normalized Extraction (7 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-space-lg shadow-sm">
+<!-- Header and Entity Match Score -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="fact_check">fact_check</span>
+<h2 class="text-headline-sm font-headline-sm font-semibold text-on-surface">Structured Normalized Extraction (Preview &amp; Verification)</h2>
+</div>
+<!-- Entity Confidence Badge -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-mono-data-sm font-mono-data-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+<span>Confidence: 98.4%</span>
+</div>
+</div>
+<!-- Extracted Customer Profile & Delivery Anchor -->
+<div class="bg-surface rounded-lg border border-outline-variant/50 p-space-md grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="flex flex-col">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Identified Contact</span>
+<span class="text-label-md font-label-md font-semibold text-on-surface mt-0.5">Rahul Sharma</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline mt-0.5">+91 98110-XXXXX</span>
+</div>
+<div class="flex flex-col md:col-span-2">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Detected Delivery Destination</span>
+<div class="flex items-start gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[16px] shrink-0 mt-0.5" data-icon="location_on">location_on</span>
+<span class="text-body-md font-body-md font-medium text-on-surface">H-Block, Connaught Place, Flat 402</span>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700 mt-1">Matched against Saved Addresses (99.2% vector similarity)</span>
+</div>
+</div>
+<!-- Kitchen Rush Alert / Ambiguity Banner -->
+<div class="flex items-center gap-space-md px-space-md py-space-sm bg-amber-50 border border-amber-200 rounded-lg text-amber-900">
+<span class="material-symbols-outlined text-amber-700 text-[20px] shrink-0" data-icon="bolt">bolt</span>
+<div class="text-body-sm font-body-sm">
+<span class="font-semibold text-amber-900">Operational Tag Flagged:</span> Customer requested <strong class="font-mono-data-sm">“jaldi se”</strong>. Fast-track order tag (<span class="font-mono-data-sm text-amber-950 font-bold">#RUSH_KITCHEN_PRIORITY</span>) automatically appended to KDS route.
+            </div>
+</div>
+<!-- Matched Menu Items SKU Table -->
+<div class="flex flex-col border border-outline-variant/50 rounded-lg overflow-hidden">
+<div class="bg-surface px-space-md py-2 border-b border-outline-variant/40 flex items-center justify-between">
+<span class="text-label-md font-label-md font-semibold text-on-surface">Matched Menu Items &amp; Modifiers (SKU Resolver)</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">2 Canonical Items</span>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<!-- Line Item 1 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-container-low/40 transition-colors">
+<div class="flex flex-col gap-1 max-w-sm">
+<div class="flex items-center gap-2">
+<span class="text-body-md font-body-md font-semibold text-on-surface">Paneer Tikka Butter Roll</span>
+<span class="px-1.5 py-0.5 text-mono-data-sm font-mono-data-sm bg-surface border border-outline-variant/60 rounded text-outline font-medium">SKU: ROLL-PAN-04</span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="tune">tune</span>
+<span class="text-on-surface-variant font-medium">Modifier:</span> Extra green chutney (Free)
+                  </div>
+</div>
+<div class="flex items-center gap-space-xl self-end md:self-auto">
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm text-outline">Qty:</span>
+<span class="text-mono-data-md font-mono-data-md font-semibold text-on-surface px-2 py-0.5 bg-surface border border-outline-variant/40 rounded">2</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-mono-data-md font-mono-data-md font-semibold text-on-surface">₹520.00</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">₹260.00 each</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-mono-data-sm font-mono-data-sm font-medium">
+<span>99.8%</span>
+</div>
+</div>
+</div>
+<!-- Line Item 2 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md hover:bg-surface-container-low/40 transition-colors">
+<div class="flex flex-col gap-1 max-w-sm">
+<div class="flex items-center gap-2">
+<span class="text-body-md font-body-md font-semibold text-on-surface">Diet Coke (330ml Can)</span>
+<span class="px-1.5 py-0.5 text-mono-data-sm font-mono-data-sm bg-surface border border-outline-variant/60 rounded text-outline font-medium">SKU: BEV-COKE-DT</span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-outline">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="check_circle">check_circle</span>
+<span>No modifiers specified</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xl self-end md:self-auto">
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm text-outline">Qty:</span>
+<span class="text-mono-data-md font-mono-data-md font-semibold text-on-surface px-2 py-0.5 bg-surface border border-outline-variant/40 rounded">1</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-mono-data-md font-mono-data-md font-semibold text-on-surface">₹60.00</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">₹60.00 each</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-mono-data-sm font-mono-data-sm font-medium">
+<span>100%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Ledger Reconciliation Total -->
+<div class="bg-surface-container-low/50 p-space-md border-t border-outline-variant/40 flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-outline">Subtotal Item Cost</span>
+<span class="text-mono-data-sm font-mono-data-sm font-medium text-on-surface">₹580.00</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-outline">CGST + SGST (5% Total)</span>
+<span class="text-mono-data-sm font-mono-data-sm font-medium text-on-surface">₹29.00</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md font-bold text-on-surface">Net Canonical Payable</span>
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Pre-calc match</span>
+</div>
+<span class="text-mono-data-lg font-mono-data-lg font-bold text-primary">₹609.00</span>
+</div>
+</div>
+</div>
+<!-- Operator Verification Actions -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 rounded-lg border border-outline-variant/60 text-on-surface hover:bg-surface-container-low text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="edit">edit</span>
+<span>Edit Extracted SKUs</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-red-200 text-error hover:bg-red-50 text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-error" data-icon="cancel">cancel</span>
+<span>Reject Transcription</span>
+</button>
+</div>
+<button class="h-9 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md font-semibold flex items-center gap-2 shadow-sm transition-all active:scale-[0.99]">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+<span>Approve &amp; Push to Canonical Queue</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Quick Ingestion Queue / Recent Ingested Streams -->
+<section class="flex flex-col gap-space-md bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border-b border-outline-variant/30 pb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="history">history</span>
+<h3 class="text-headline-sm font-headline-sm font-semibold text-on-surface">Quick Ingestion Queue &amp; Recent Streams</h3>
+<span class="text-mono-data-sm font-mono-data-sm text-outline ml-2">Last 15 minutes</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-body-sm font-body-sm text-outline">Filter by status:</span>
+<div class="flex gap-1">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded bg-surface-container-low text-primary font-medium">All (48)</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-outline hover:text-on-surface">Parsed</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-outline hover:text-on-surface">Dispatched</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded text-outline hover:text-on-surface">Flagged</button>
+</div>
+</div>
+</div>
+<!-- Table Stream List -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30 text-mono-data-sm font-mono-data-sm text-outline">
+<th class="py-2 px-space-md font-medium">INGESTION ID</th>
+<th class="py-2 px-space-md font-medium">SOURCE CHANNEL</th>
+<th class="py-2 px-space-md font-medium">TRANSCRIPTION SUMMARY</th>
+<th class="py-2 px-space-md font-medium">EXTRACTED ITEMS</th>
+<th class="py-2 px-space-md font-medium">NET AMOUNT</th>
+<th class="py-2 px-space-md font-medium">AI ACCURACY</th>
+<th class="py-2 px-space-md font-medium">STATUS</th>
+<th class="py-2 px-space-md font-medium text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 text-body-sm font-body-sm">
+<!-- Row 1: Parsed -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md font-mono-data-sm text-primary font-semibold">
+                  #IN-88912
+                </td>
+<td class="py-space-md px-space-md text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-emerald-600 text-[16px]" data-icon="chat">chat</span>
+<span>WhatsApp API</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant max-w-xs truncate" title="2 Masala Chai aur 1 Bun Maska pack karke rakhna, 10 min me pickup.">
+                  “2 Masala Chai aur 1 Bun Maska pack karke rakhna, 10 min me...”
+                </td>
+<td class="py-space-md px-space-md text-on-surface font-medium">
+                  2× CHAI-MAS, 1× BUN-MSK
+                </td>
+<td class="py-space-md px-space-md font-mono-data-md text-on-surface">
+                  ₹168.00
+                </td>
+<td class="py-space-md px-space-md">
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700">99.6%</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-mono-data-sm font-mono-data-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Parsed
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="text-label-sm font-label-sm text-primary hover:underline font-semibold">Inspect Diff</button>
+</td>
+</tr>
+<!-- Row 2: Dispatched -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-md px-space-md font-mono-data-sm text-primary font-semibold">
+                  #IN-88911
+                </td>
+<td class="py-space-md px-space-md text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="call">call</span>
+<span>IVR Phone Line</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant max-w-xs truncate" title="Send 4 Veg Biryani full plate with mirchi ka salan to Flat 301.">
+                  “Send 4 Veg Biryani full plate with mirchi ka salan to Flat 301...”
+                </td>
+<td class="py-space-md px-space-md text-on-surface font-medium">
+                  4× BIR-VEG-HYD
+                </td>
+<td class="py-space-md px-space-md font-mono-data-md text-on-surface">
+                  ₹1,340.00
+                </td>
+<td class="py-space-md px-space-md">
+<span class="text-mono-data-sm font-mono-data-sm text-emerald-700">98.1%</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-mono-data-sm font-mono-data-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Dispatched
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="text-label-sm font-label-sm text-outline hover:text-on-surface">View KDS</button>
+</td>
+</tr>
+<!-- Row 3: Flagged for Review -->
+<tr class="hover:bg-surface-container-low/40 transition-colors bg-red-50/20">
+<td class="py-space-md px-space-md font-mono-data-sm text-primary font-semibold">
+                  #IN-88910
+                </td>
+<td class="py-space-md px-space-md text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sky-600 text-[16px]" data-icon="send">send</span>
+<span>Telegram Bot</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface-variant max-w-xs truncate" title="Cold coffee without sugar and something spicy to eat.">
+                  “Cold coffee without sugar and something spicy to eat...”
+                </td>
+<td class="py-space-md px-space-md text-error font-medium">
+                  1× BEV-COF-CLD, [Unmapped Snack]
+                </td>
+<td class="py-space-md px-space-md font-mono-data-md text-on-surface">
+                  ₹180.00 + ?
+                </td>
+<td class="py-space-md px-space-md">
+<span class="text-mono-data-sm font-mono-data-sm text-amber-700">76.4%</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-mono-data-sm font-mono-data-sm font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> Flagged for Review
+                  </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="text-label-sm font-label-sm text-primary font-semibold hover:underline">Resolve Conflict</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</body></html>

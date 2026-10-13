@@ -1,0 +1,19 @@
+{
+  "name": "pakka-order-ai-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PakkaOrderAI multi-channel reconciliation platform",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run --prefix frontend dev",
+    "dev:backend": "npm run --prefix backend dev",
+    "build:frontend": "npm run --prefix frontend build",
+    "build:backend": "npm run --prefix backend build",
+    "db:migrate": "npm run --prefix backend db:migrate",
+    "db:seed": "npm run --prefix backend db:seed",
+    "test:backend": "npm run --prefix backend test"
+  }
+}

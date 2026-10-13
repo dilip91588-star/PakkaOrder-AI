@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PakkaOrder AI - Unified Orders Inbox</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#224e47",
+            "surface-container": "#e5eeff",
+            "inverse-primary": "#80d5cb",
+            "inverse-surface": "#213145",
+            "tertiary-fixed-dim": "#a2d0c6",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "primary-fixed": "#9cf2e8",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#a3faef",
+            "primary-fixed-dim": "#80d5cb",
+            "on-surface": "#0b1c30",
+            "tertiary-fixed": "#bdece2",
+            "secondary": "#216963",
+            "surface-tint": "#006a63",
+            "surface-container-high": "#dce9ff",
+            "secondary-container": "#a8ece5",
+            "surface-variant": "#d3e4fe",
+            "on-background": "#0b1c30",
+            "surface-container-low": "#eff4ff",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00504b",
+            "inverse-on-surface": "#eaf1ff",
+            "surface": "#f8f9ff",
+            "outline-variant": "#bdc9c6",
+            "primary-container": "#0f766e",
+            "on-tertiary-fixed": "#00201c",
+            "error": "#ba1a1a",
+            "outline": "#6e7977",
+            "on-secondary-container": "#266d68",
+            "on-tertiary-container": "#c5f3ea",
+            "primary": "#005c55",
+            "secondary-fixed-dim": "#8fd3cc",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#00201e",
+            "on-surface-variant": "#3e4947",
+            "background": "#f8f9ff",
+            "secondary-fixed": "#abefe8",
+            "on-primary-fixed-variant": "#00504a",
+            "tertiary": "#2d5951",
+            "tertiary-container": "#467169",
+            "on-primary-fixed": "#00201d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "margin-desktop": "2rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "gutter-desktop": "1.5rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-xxs": "0.125rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "mono-data-lg": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-data-md": ["JetBrains Mono"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data-sm": ["JetBrains Mono"],
+            "headline-xl-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "mono-data-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "mono-data-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full bg-background font-body-md text-on-surface antialiased overflow-hidden flex">
+<!-- ========================================================================= -->
+<!-- 1. LEFT SIDE NAVIGATION BAR (Predicted Component: SideNavBar)            -->
+<!-- ========================================================================= -->
+<aside class="w-64 shrink-0 h-full flex flex-col justify-between bg-surface-container-lowest border-r border-outline-variant/40 select-none z-40">
+<!-- Brand / Outlet Header -->
+<div>
+<div class="p-space-md border-b border-outline-variant/40 flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-headline-sm shadow-sm">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="overflow-hidden">
+<h1 class="text-headline-sm font-headline-sm font-semibold tracking-tight text-on-surface truncate">PakkaOrder AI</h1>
+<p class="text-body-sm font-body-sm text-outline truncate">Connaught Place Central • Hub #04</p>
+</div>
+</div>
+<!-- Main Navigation Tabs -->
+<nav class="p-space-sm space-y-space-xxs mt-space-xs">
+<!-- 1. Reconciliation (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors duration-150 hover:bg-surface-container-low active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="text-label-md font-label-md">Reconciliation</span>
+</a>
+<!-- 2. Omnichannel Live (ACTIVE TAB - Maps to Orders Inbox) -->
+<a class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-low text-primary font-semibold rounded-lg border-l-2 border-primary active:scale-[0.99] transition-transform" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-md font-label-md">Omnichannel Live</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-mono-data-sm font-semibold">1.8k</span>
+</a>
+<!-- 3. Channel Audits (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors duration-150 hover:bg-surface-container-low active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-label-md font-label-md">Channel Audits</span>
+</a>
+<!-- 4. Discrepancies (Inactive) -->
+<a class="flex items-center justify-between px-space-md py-space-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors duration-150 hover:bg-surface-container-low active:scale-[0.99]" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+<span class="text-label-md font-label-md">Discrepancies</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container text-[10px] font-mono-data-sm font-semibold">14</span>
+</a>
+<!-- 5. Analytics (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors duration-150 hover:bg-surface-container-low active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+<!-- 6. Settings (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface rounded-lg transition-colors duration-150 hover:bg-surface-container-low active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom Action & Footers -->
+<div class="p-space-md border-t border-outline-variant/40 space-y-space-sm">
+<!-- Resolution CTA -->
+<button class="w-full flex items-center justify-center gap-space-sm py-2 px-space-md bg-primary-container text-on-primary text-label-md font-label-md rounded-lg hover:bg-primary transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_fix_high">auto_fix_high</span>
+<span>Resolve Batch (14)</span>
+</button>
+<!-- Footer Sub-links -->
+<div class="pt-space-xs flex flex-col gap-space-xxs text-body-sm font-body-sm text-on-surface-variant">
+<a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="history">history</span>
+<span>Audit Trail</span>
+</a>
+<a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="dns">dns</span>
+<span>Terminal Status</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE & CONTENT CANVAS                                           -->
+<!-- ========================================================================= -->
+<div class="flex-1 flex flex-col h-full min-w-0 bg-background overflow-hidden">
+<!-- 2. TOP APP BAR (Predicted Component: TopNavBar) -->
+<header class="h-14 shrink-0 bg-surface-container-lowest border-b border-outline-variant/40 px-space-xl flex items-center justify-between z-30 select-none">
+<!-- Left: Quick Breadcrumb / Outlet Switcher Links -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-xs font-semibold text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+<span class="text-headline-sm font-headline-sm tracking-tight text-primary">PakkaOrder AI</span>
+</div>
+<div class="h-4 w-px bg-outline-variant/40"></div>
+<nav class="flex items-center gap-space-md text-label-md font-label-md">
+<a class="text-primary font-semibold border-b-2 border-primary pb-space-xs" href="#">All Outlets</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Swiggy</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">Zomato</a>
+<a class="text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors" href="#">WhatsApp POS</a>
+</nav>
+</div>
+<!-- Right: Real-time Indicators, Secondary Actions & Auditor Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Live System Signals -->
+<div class="flex items-center gap-space-xs text-outline text-body-sm font-mono-data-sm bg-surface-container-low px-2 py-1 rounded-lg border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Websocket: 24ms</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="p-1.5 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors" title="Aggregator Gateways">
+<span class="material-symbols-outlined" data-icon="wifi_tethering">wifi_tethering</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container-low hover:text-on-surface transition-colors" title="Settlement Vault">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+</div>
+<div class="h-4 w-px bg-outline-variant/40"></div>
+<!-- Trailing Secondary & Primary Actions from JSON -->
+<button class="px-space-md py-1.5 text-label-md font-label-md border border-outline-variant/60 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="file_download">file_download</span>
+<span>Export Audit</span>
+</button>
+<button class="px-space-md py-1.5 text-label-md font-label-md bg-primary-container text-on-primary rounded-lg hover:bg-primary transition-colors flex items-center gap-1.5 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[15px]" data-icon="sync">sync</span>
+<span>Force Resync</span>
+</button>
+<!-- Lead Auditor Profile Badge -->
+<div class="flex items-center gap-2 pl-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-xs font-semibold ring-1 ring-outline-variant/40">
+            MK
+          </div>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- UNIFIED ORDERS INBOX: BODY CANVAS (Header, Switcher, Filters, Table, Drawer)-->
+<!-- ========================================================================= -->
+<main class="flex-1 flex flex-col min-h-0 p-space-xl gap-space-md overflow-hidden">
+<!-- 1. Page Header Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm shrink-0">
+<div>
+<div class="flex items-center gap-space-sm">
+<h2 class="text-headline-md font-headline-md font-semibold tracking-tight text-on-surface">Unified Orders Inbox</h2>
+<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-mono-data-sm font-medium border border-emerald-200 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Auto-Reconciling
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">All incoming omnichannel orders normalized into verified canonical records.</p>
+</div>
+<div class="flex items-center gap-space-sm self-start sm:self-auto">
+<button class="px-3 py-1.5 text-label-md font-label-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+<span>Export CSV</span>
+</button>
+<button class="px-3 py-1.5 text-label-md font-label-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-primary hover:bg-surface-container-low transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="refresh">refresh</span>
+<span>Force Refresh</span>
+</button>
+</div>
+</div>
+<!-- 2. Segmented View Switcher & Date Range Ribbon -->
+<div class="flex flex-wrap items-center justify-between gap-space-md shrink-0 border-b border-outline-variant/40 pb-space-sm">
+<!-- Segmented Tab Controls -->
+<div class="flex items-center p-1 bg-surface-container-low rounded-lg border border-outline-variant/30 text-label-md font-label-md">
+<button class="px-space-md py-1 bg-surface-container-lowest text-primary font-semibold rounded-lg shadow-sm flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[15px]" data-icon="task_alt">task_alt</span>
+<span>Canonical Master Orders</span>
+<span class="ml-1 text-mono-data-sm font-medium px-1.5 py-0.2 bg-primary/10 text-primary rounded-full">1,798</span>
+</button>
+<button class="px-space-md py-1 text-on-surface-variant hover:text-on-surface rounded-lg transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="raw_on">raw_on</span>
+<span>Raw Source Payloads</span>
+<span class="ml-1 text-mono-data-sm font-medium px-1.5 py-0.2 bg-surface-container text-outline rounded-full">1,842</span>
+</button>
+</div>
+<!-- Date Range Filter Selector -->
+<div class="flex items-center gap-space-xs text-label-md font-label-md">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="calendar_today">calendar_today</span>
+<span>Today (Oct 24, 2025)</span>
+<span class="material-symbols-outlined text-[14px] text-outline ml-1" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<div class="flex items-center gap-1 text-mono-data-sm text-outline px-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>Last Sync: 14:26:08</span>
+</div>
+</div>
+</div>
+<!-- 3. Search and Multi-Channel Filter Toolbar -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm shrink-0 bg-surface-container-lowest p-space-sm rounded-lg border border-outline-variant/40">
+<!-- Search bar input -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-body-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface placeholder:text-outline/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Filter by Order #, Customer, Item, or Transaction ID..." type="text" value=""/>
+</div>
+<!-- Channel Filter Dropdown -->
+<div class="md:col-span-3">
+<div class="relative flex items-center">
+<select class="w-full py-1.5 pl-3 pr-8 text-label-md font-label-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface focus:outline-none focus:border-primary-container cursor-pointer appearance-none">
+<option>Channel: All Channels</option>
+<option>Channel: Zomato</option>
+<option>Channel: Swiggy</option>
+<option>Channel: WhatsApp Business</option>
+<option>Channel: On-Prem POS</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 pointer-events-none text-outline text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Status Filter Dropdown -->
+<div class="md:col-span-3">
+<div class="relative flex items-center">
+<select class="w-full py-1.5 pl-3 pr-8 text-label-md font-label-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface focus:outline-none focus:border-primary-container cursor-pointer appearance-none">
+<option>Status: All Statuses</option>
+<option>Status: Verified KOT Printed</option>
+<option>Status: Pending Review</option>
+<option>Status: Dispatched</option>
+<option>Status: Modified / Override</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 pointer-events-none text-outline text-[18px]" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<!-- Reset / Count Tag -->
+<div class="md:col-span-1 flex items-center justify-end">
+<button class="w-full h-full py-1 text-label-sm font-label-sm text-outline hover:text-on-surface flex items-center justify-center gap-1 border border-dashed border-outline-variant/60 rounded-lg hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="restart_alt">restart_alt</span>
+<span>Reset</span>
+</button>
+</div>
+</div>
+<!-- 4. Split-Screen Layout: Master Orders Table + Order Details Drawer Preview -->
+<div class="flex-1 flex gap-space-md min-h-0 overflow-hidden">
+<!-- Orders Table Container (Left 65% width) -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest rounded-lg border border-outline-variant/40 shadow-sm overflow-hidden min-w-0">
+<!-- Table Scrollable Area -->
+<div class="flex-1 overflow-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low text-on-surface-variant text-label-sm font-label-sm border-b border-outline-variant/40 z-10 select-none">
+<tr>
+<th class="py-2.5 px-space-md font-medium w-10 text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-2.5 px-space-md font-medium">Order ID</th>
+<th class="py-2.5 px-space-md font-medium">Customer</th>
+<th class="py-2.5 px-space-md font-medium">Ingested Channels</th>
+<th class="py-2.5 px-space-md font-medium">Order Items Summary</th>
+<th class="py-2.5 px-space-md font-medium text-right">Amount (INR)</th>
+<th class="py-2.5 px-space-md font-medium text-center">Status</th>
+<th class="py-2.5 px-space-md font-medium text-right">Time</th>
+<th class="py-2.5 px-space-md font-medium text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 text-body-sm font-body-sm">
+<!-- ROW 1 (SELECTED / PREVIEW ACTIVE: #PK-9821) -->
+<tr class="bg-primary/5 hover:bg-primary/10 transition-colors border-l-4 border-l-primary cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input checked="" class="rounded border-primary text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md font-medium text-primary flex items-center gap-1.5">
+<span>#PK-9821</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" title="Focused"></span>
+</td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Rahul Sharma</td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 border border-red-200 text-[10px] font-mono font-medium flex items-center gap-0.5" title="Zomato Order #ZOM-4412">
+<span class="font-bold">Z</span>omato
+                      </span>
+<span class="text-outline text-xs">+</span>
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-medium flex items-center gap-0.5" title="WhatsApp Confirmed">
+<span class="font-bold">WA</span> Voice
+                      </span>
+</div>
+</td>
+<td class="py-2.5 px-space-md text-on-surface truncate max-w-[210px]" title="3x Paneer Tikka Roll, 1x Diet Coke">
+                    3x Paneer Tikka Roll, 1x Diet Coke
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md font-semibold text-on-surface">
+                    ₹840.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-emerald-600" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      Verified Master
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:25 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-primary transition-colors" title="Inspect Order Details">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- ROW 2: #PK-9820 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md text-on-surface font-medium">
+                    #PK-9820
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Ananya Roy</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded bg-orange-50 text-orange-700 border border-orange-200 text-[10px] font-mono font-medium">
+                      Swiggy
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-on-surface-variant truncate max-w-[210px]" title="2x Chicken Biryani, 2x Mirchi Ka Salan">
+                    2x Chicken Biryani, 2x Mirchi Ka Salan
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md text-on-surface">
+                    ₹720.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-teal-600" data-icon="print">print</span>
+                      KOT Printed
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:24 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface transition-colors" title="Inspect">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- ROW 3: #PK-9819 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md text-on-surface font-medium">
+                    #PK-9819
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Amit Kumar</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-medium">
+                      WhatsApp POS
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-on-surface-variant truncate max-w-[210px]" title="1x Dal Makhani, 4x Butter Roti">
+                    1x Dal Makhani, 4x Butter Roti
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md text-on-surface">
+                    ₹380.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-sky-600" data-icon="soup_kitchen">soup_kitchen</span>
+                      In Prep (Kitchen)
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:22 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface transition-colors" title="Inspect">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- ROW 4: #PK-9818 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md text-on-surface font-medium">
+                    #PK-9818
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Vikram Malhotra</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 border border-red-200 text-[10px] font-mono font-medium">
+                      Zomato
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-on-surface-variant truncate max-w-[210px]" title="1x Veg Tandoori Platter">
+                    1x Veg Tandoori Platter
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md text-on-surface">
+                    ₹540.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-blue-600" data-icon="two_wheeler">two_wheeler</span>
+                      Dispatched
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:19 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface transition-colors" title="Inspect">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- ROW 5: #PK-9817 (DISCREPANCY ALERT) -->
+<tr class="bg-amber-50/40 hover:bg-amber-50/70 transition-colors cursor-pointer border-l-2 border-l-amber-500">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-amber-300 text-amber-600 focus:ring-amber-500 h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md font-medium text-amber-900">
+                    #PK-9817
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Rohit Verma</td>
+<td class="py-2.5 px-space-md">
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.5 rounded bg-orange-50 text-orange-700 border border-orange-200 text-[10px] font-mono font-medium">Swiggy</span>
+<span class="text-outline text-xs">+</span>
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-medium">WA</span>
+</div>
+</td>
+<td class="py-2.5 px-space-md text-amber-900 truncate max-w-[210px]" title="2x Mutton Rogan Josh [Tax Discrepancy]">
+                    2x Mutton Rogan Josh <span class="text-error font-medium">(Diff: -₹40)</span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md font-semibold text-amber-900">
+                    ₹980.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-amber-700" data-icon="warning">warning</span>
+                      Discrepancy Pending
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:18 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-amber-200/50 rounded text-amber-700 transition-colors" title="Resolve Discrepancy">
+<span class="material-symbols-outlined text-[18px]" data-icon="build">build</span>
+</button>
+</td>
+</tr>
+<!-- ROW 6: #PK-9816 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md text-on-surface font-medium">
+                    #PK-9816
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Meera Iyer</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 text-[10px] font-mono font-medium">
+                      Direct POS
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-on-surface-variant truncate max-w-[210px]" title="3x Cold Coffee">
+                    3x Cold Coffee
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md text-on-surface">
+                    ₹360.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-slate-600" data-icon="done_all">done_all</span>
+                      Fulfilled
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:15 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface transition-colors" title="Inspect">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- ROW 7: Additional canonical historical record -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-2.5 px-space-md text-center">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container h-3.5 w-3.5 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-2.5 px-space-md font-mono-data-md text-on-surface font-medium">
+                    #PK-9815
+                  </td>
+<td class="py-2.5 px-space-md font-medium text-on-surface">Kabir Singhania</td>
+<td class="py-2.5 px-space-md">
+<span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 border border-red-200 text-[10px] font-mono font-medium">
+                      Zomato
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-on-surface-variant truncate max-w-[210px]" title="1x Butter Chicken Combo, 2x Garlic Naan">
+                    1x Butter Chicken Combo, 2x Garlic Naan
+                  </td>
+<td class="py-2.5 px-space-md text-right font-mono-data-md text-on-surface">
+                    ₹610.00
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-[11px] font-mono font-medium">
+<span class="material-symbols-outlined text-[13px] text-slate-600" data-icon="done_all">done_all</span>
+                      Fulfilled
+                    </span>
+</td>
+<td class="py-2.5 px-space-md text-right font-mono-data-sm text-outline whitespace-nowrap">
+                    14:11 IST
+                  </td>
+<td class="py-2.5 px-space-md text-center">
+<button class="p-1 hover:bg-surface-container rounded text-outline hover:text-on-surface transition-colors" title="Inspect">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bottom Pagination / Status Footer -->
+<div class="p-space-sm bg-surface-container-low border-t border-outline-variant/40 flex items-center justify-between text-body-sm text-outline select-none shrink-0">
+<div class="flex items-center gap-2">
+<span>Showing <strong class="text-on-surface">1 - 7</strong> of 1,798 canonical records</span>
+<span class="text-outline/40">|</span>
+<span class="flex items-center gap-1 text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+                Zero unhandled ingestion lag
+              </span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded border border-outline-variant/40 bg-surface-container-lowest text-outline hover:text-on-surface disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<span class="px-2 font-mono-data-sm text-on-surface font-semibold">1</span>
+<button class="p-1 rounded border border-outline-variant/40 bg-surface-container-lowest text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- 5. ORDER DETAILS SIDE DRAWER PREVIEW (FLYOUT FOR ROW #PK-9821)           -->
+<!-- ========================================================================= -->
+<aside class="w-[380px] xl:w-[420px] shrink-0 bg-surface-container-lowest rounded-lg border border-outline-variant/40 shadow-sm flex flex-col justify-between overflow-hidden">
+<!-- Drawer Header -->
+<div class="p-space-md border-b border-outline-variant/40 bg-surface-container-low/50 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-2">
+<span class="p-1.5 bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt">receipt</span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-headline-sm font-headline-sm font-semibold text-on-surface">Order #PK-9821</h3>
+<span class="text-mono-data-sm px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-medium">Canonical</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Created: Oct 24, 2025 • 14:25:12 IST</p>
+</div>
+</div>
+<button class="p-1 text-outline hover:text-on-surface rounded-lg hover:bg-surface-container-low transition-colors" title="Close Drawer">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Drawer Content: Scrollable Provenance & Details -->
+<div class="flex-1 overflow-y-auto p-space-md space-y-space-md custom-scrollbar">
+<!-- Customer & Channel Anchor Card -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg border border-outline-variant/30 space-y-space-xs text-body-sm">
+<div class="flex items-center justify-between">
+<span class="text-outline font-label-md">Customer</span>
+<span class="font-semibold text-on-surface">Rahul Sharma (+91 98112 04812)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-outline font-label-md">Delivery Partner</span>
+<span class="text-on-surface flex items-center gap-1 font-mono-data-sm">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> Zomato Logistics (#R-881)
+                </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-outline font-label-md">Table / KOT Token</span>
+<span class="font-mono-data-sm font-semibold text-primary">KOT-TK#104</span>
+</div>
+</div>
+<!-- Provenance Trail Diagram -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<h4 class="text-label-md font-label-md font-semibold text-on-surface uppercase tracking-wider text-[11px]">Provenance Pipeline Trail</h4>
+<span class="text-[10px] text-emerald-600 font-mono-data-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified">verified</span> AI 99.4% Match
+                </span>
+</div>
+<!-- Pipeline Steps Vertical Node Graph -->
+<div class="bg-surface-container-low/40 rounded-lg p-space-md border border-outline-variant/30 space-y-3 relative before:absolute before:left-[19px] before:top-4 before:bottom-4 before:w-0.5 before:bg-outline-variant/50">
+<!-- Node 1: Zomato Webhook Ingestion -->
+<div class="relative flex items-start gap-space-sm z-10">
+<div class="w-6 h-6 rounded-full bg-red-100 text-red-600 border border-red-300 flex items-center justify-center shrink-0 text-xs font-bold font-mono">
+                    1
+                  </div>
+<div class="flex-1 bg-surface-container-lowest p-2 rounded border border-outline-variant/30 shadow-2xs">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface">Zomato Ingestion</span>
+<span class="text-mono-data-sm text-[10px] text-outline">14:25:02</span>
+</div>
+<p class="text-body-sm text-outline text-[11px] mt-0.5 font-mono">Raw Payload: ID #ZOM-4412 (₹840.00)</p>
+</div>
+</div>
+<!-- Node 2: WhatsApp Voice/Chat parse -->
+<div class="relative flex items-start gap-space-sm z-10">
+<div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 border border-emerald-300 flex items-center justify-center shrink-0 text-xs font-bold font-mono">
+                    2
+                  </div>
+<div class="flex-1 bg-surface-container-lowest p-2 rounded border border-outline-variant/30 shadow-2xs">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface">WhatsApp Voice/Chat Parse</span>
+<span class="text-mono-data-sm text-[10px] text-outline">14:25:08</span>
+</div>
+<p class="text-body-sm text-outline text-[11px] mt-0.5">Customer requested "Extra mint chutney" via audio note.</p>
+</div>
+</div>
+<!-- Node 3: Reconciled Master Order -->
+<div class="relative flex items-start gap-space-sm z-10">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 text-xs font-bold font-mono shadow-xs">
+                    ✓
+                  </div>
+<div class="flex-1 bg-surface-container-lowest p-2 rounded border-l-2 border-primary border-outline-variant/30 shadow-2xs">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm font-semibold text-primary">Reconciled Master Order</span>
+<span class="text-mono-data-sm text-[10px] text-primary">14:25:12</span>
+</div>
+<p class="text-body-sm text-on-surface text-[11px] mt-0.5">Merged canonical record #PK-9821 with kitchen addon modifier.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification & Operator Audit Section -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg border border-outline-variant/30 space-y-2">
+<h4 class="text-label-sm font-label-sm font-semibold text-on-surface uppercase tracking-wider text-[11px]">Audit &amp; Verification</h4>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">Verification Status</span>
+<span class="text-emerald-700 font-medium flex items-center gap-1 font-mono-data-sm text-[11px]">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified_user">verified_user</span> Human Verified
+                </span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">Assigned Operator</span>
+<span class="font-medium text-on-surface">Manish K. (Staff ID #08)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-outline">KOT Kitchen Routing</span>
+<span class="font-mono-data-sm text-on-surface">Station #2 (Tandoor &amp; Rolls)</span>
+</div>
+</div>
+<!-- Line Items Breakdown Table -->
+<div class="space-y-space-xs">
+<h4 class="text-label-sm font-label-sm font-semibold text-on-surface uppercase tracking-wider text-[11px]">Normalized Line Items</h4>
+<div class="border border-outline-variant/40 rounded-lg overflow-hidden">
+<table class="w-full text-left text-body-sm">
+<thead class="bg-surface-container-low text-on-surface-variant text-[11px] font-label-sm">
+<tr>
+<th class="py-1.5 px-space-sm font-medium">Item</th>
+<th class="py-1.5 px-space-sm font-medium text-center">Qty</th>
+<th class="py-1.5 px-space-sm font-medium text-right">Price</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 bg-surface-container-lowest">
+<tr>
+<td class="py-1.5 px-space-sm">
+<div class="font-medium text-on-surface">Paneer Tikka Roll</div>
+<div class="text-[10px] text-emerald-600 font-mono">+ Extra mint chutney (WA Addon)</div>
+</td>
+<td class="py-1.5 px-space-sm text-center font-mono-data-sm">3</td>
+<td class="py-1.5 px-space-sm text-right font-mono-data-sm">₹720.00</td>
+</tr>
+<tr>
+<td class="py-1.5 px-space-sm">
+<div class="font-medium text-on-surface">Diet Coke (Can 300ml)</div>
+</td>
+<td class="py-1.5 px-space-sm text-center font-mono-data-sm">1</td>
+<td class="py-1.5 px-space-sm text-right font-mono-data-sm">₹80.00</td>
+</tr>
+<tr class="bg-surface-container-low/40">
+<td class="py-1 px-space-sm text-outline text-[11px]" colspan="2">GST / Packaging Charges (5%)</td>
+<td class="py-1 px-space-sm text-right font-mono-data-sm text-[11px]">₹40.00</td>
+</tr>
+<tr class="font-semibold text-on-surface border-t border-outline-variant/40">
+<td class="py-1.5 px-space-sm" colspan="2">Total Canonical Value</td>
+<td class="py-1.5 px-space-sm text-right font-mono-data-md text-primary">₹840.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Bar -->
+<div class="p-space-md border-t border-outline-variant/40 bg-surface-container-lowest flex items-center gap-space-sm shrink-0">
+<button class="flex-1 py-2 px-space-md bg-surface-container-lowest border border-outline-variant/60 rounded-lg text-on-surface text-label-md font-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1.5 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="print">print</span>
+<span>Print KOT Duplicate</span>
+</button>
+<button class="flex-1 py-2 px-space-md bg-primary-container text-on-primary rounded-lg text-label-md font-label-md hover:bg-primary transition-colors flex items-center justify-center gap-1.5 shadow-sm active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[16px]" data-icon="mark_email_read">mark_email_read</span>
+<span>Dispatch Order</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>

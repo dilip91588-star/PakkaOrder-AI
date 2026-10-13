@@ -1,0 +1,10 @@
+# Environment files and credentials
+.env
+.env.*
+*.env
+
+# Dependencies and build artifacts
+node_modules/
+dist/
+build/
+*.tsbuildinfo

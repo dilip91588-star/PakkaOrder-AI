@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Operations Overview — PakkaOrder AI</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#224e47",
+            "surface-container": "#e5eeff",
+            "inverse-primary": "#80d5cb",
+            "inverse-surface": "#213145",
+            "tertiary-fixed-dim": "#a2d0c6",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "primary-fixed": "#9cf2e8",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#a3faef",
+            "primary-fixed-dim": "#80d5cb",
+            "on-surface": "#0b1c30",
+            "tertiary-fixed": "#bdece2",
+            "secondary": "#216963",
+            "surface-tint": "#006a63",
+            "surface-container-high": "#dce9ff",
+            "secondary-container": "#a8ece5",
+            "surface-variant": "#d3e4fe",
+            "on-background": "#0b1c30",
+            "surface-container-low": "#eff4ff",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00504b",
+            "inverse-on-surface": "#eaf1ff",
+            "surface": "#f8f9ff",
+            "outline-variant": "#bdc9c6",
+            "primary-container": "#0f766e",
+            "on-tertiary-fixed": "#00201c",
+            "error": "#ba1a1a",
+            "outline": "#6e7977",
+            "on-secondary-container": "#266d68",
+            "on-tertiary-container": "#c5f3ea",
+            "primary": "#005c55",
+            "secondary-fixed-dim": "#8fd3cc",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#00201e",
+            "on-surface-variant": "#3e4947",
+            "background": "#f8f9ff",
+            "secondary-fixed": "#abefe8",
+            "on-primary-fixed-variant": "#00504a",
+            "tertiary": "#2d5951",
+            "tertiary-container": "#467169",
+            "on-primary-fixed": "#00201d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "margin-desktop": "2rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "gutter-desktop": "1.5rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-xxs": "0.125rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "space-3xl": "3rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "mono-data-lg": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-data-md": ["JetBrains Mono"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "mono-data-sm": ["JetBrains Mono"],
+            "headline-xl-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "mono-data-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "mono-data-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-data-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="h-full text-on-surface bg-surface font-body-md text-body-md antialiased flex">
+<!-- ==================== FIXED LEFT SIDEBAR (SideNavBar) ==================== -->
+<aside class="fixed inset-y-0 left-0 w-64 z-40 flex flex-col justify-between p-space-md bg-surface-container-lowest border-r border-outline-variant/40">
+<div class="flex flex-col gap-space-lg">
+<!-- Brand & Hub Header -->
+<div class="flex items-center gap-space-sm px-space-xs pb-space-sm border-b border-outline-variant/30">
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-headline-sm font-semibold shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-tight text-on-surface">PakkaOrder AI</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary uppercase tracking-wider">v2.4</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant truncate">Connaught Place Central • Hub #04</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1">
+<!-- Tab 1: Reconciliation (Active) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-surface-container-low text-primary font-semibold rounded-lg border-l-2 border-primary active:scale-[0.99] transition-transform duration-150 ease-out" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="sync_alt">sync_alt</span>
+<span class="text-label-md font-label-md flex-1">Reconciliation</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</a>
+<!-- Tab 2: Omnichannel Live -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-md font-label-md flex-1">Omnichannel Live</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">128/m</span>
+</a>
+<!-- Tab 3: Channel Audits -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-label-md font-label-md flex-1">Channel Audits</span>
+</a>
+<!-- Tab 4: Discrepancies with badge -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-error" data-icon="rule">rule</span>
+<span class="text-label-md font-label-md flex-1">Discrepancies</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-mono-data-sm font-semibold bg-error/10 text-error">14</span>
+</a>
+<!-- Tab 5: Analytics -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-label-md font-label-md flex-1">Analytics</span>
+</a>
+<!-- Tab 6: Settings -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span class="text-label-md font-label-md flex-1">Settings</span>
+</a>
+</nav>
+<!-- Primary Action in Sidebar -->
+<div class="px-space-xs pt-space-xs">
+<button class="w-full flex items-center justify-center gap-space-xs py-2 px-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container text-label-md font-label-md font-semibold transition-all shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]" data-icon="rule">rule</span>
+<span>Resolve Batch (14)</span>
+</button>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-space-md border-t border-outline-variant/30 flex flex-col gap-1">
+<div class="px-2 py-1 mb-1 bg-surface-container-low/60 rounded border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-mono-data-sm font-mono-data-sm text-on-surface-variant">Cluster: #CP-DEL-04</span>
+</div>
+<span class="text-mono-data-sm font-mono-data-sm text-primary font-medium">99.98%</span>
+</div>
+<a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+<span class="text-label-md font-label-md">Audit Trail</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="dns">dns</span>
+<span class="text-label-md font-label-md">Terminal Status</span>
+</a>
+</div>
+</aside>
+<!-- ==================== MAIN WORKSPACE CANVAS ==================== -->
+<div class="flex-1 pl-64 flex flex-col min-h-screen bg-surface">
+<!-- TopNavBar (enterprise_header) -->
+<header class="sticky top-0 z-30 flex items-center justify-between w-full h-14 px-space-xl bg-surface-container-lowest border-b border-outline-variant/40">
+<!-- Search & Channels Bar -->
+<div class="flex items-center gap-space-lg flex-1 max-w-2xl">
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 bg-surface text-body-md font-body-md border border-outline-variant/50 rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-[13px]" placeholder="Search order ID, SKU, customer ref..." type="text"/>
+<kbd class="absolute right-2 top-2 text-[10px] font-mono-data-sm px-1.5 py-0.5 bg-surface-container-low border border-outline-variant/40 rounded text-outline">⌘K</kbd>
+</div>
+<!-- Channel Filter Chips -->
+<div class="hidden xl:flex items-center gap-space-xs text-label-md font-label-md">
+<button class="px-2.5 py-1 text-primary font-semibold border-b-2 border-primary pb-space-xs transition-colors">All Outlets</button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Swiggy
+          </button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Zomato
+          </button>
+<button class="px-2.5 py-1 text-on-surface-variant hover:text-on-surface pb-space-xs transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> WhatsApp POS
+          </button>
+</div>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-space-md">
+<!-- Secondary Action -->
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest text-on-surface border border-outline-variant/50 rounded-lg text-label-md font-label-md hover:bg-surface hover:border-outline/60 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+<span>Export Audit</span>
+</button>
+<!-- Primary Action: Force Resync -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary rounded-lg text-label-md font-label-md font-semibold hover:bg-primary-container active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px] animate-spin" data-icon="sync">sync</span>
+<span>Force Resync</span>
+</button>
+<!-- Icon Actions & Status -->
+<div class="flex items-center gap-1 pl-space-xs border-l border-outline-variant/40">
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Ingestion Streams">
+<span class="material-symbols-outlined text-[20px]" data-icon="wifi_tethering">wifi_tethering</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded transition-colors" title="Settlement Account">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+</div>
+<!-- Profile Chip -->
+<div class="flex items-center gap-2 pl-space-xs border-l border-outline-variant/40">
+<div class="w-7 h-7 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary font-semibold text-xs">
+            FA
+          </div>
+<div class="hidden lg:block text-left">
+<div class="text-label-sm font-label-sm font-semibold text-on-surface leading-tight">Ananya Roy</div>
+<div class="text-[11px] font-mono-data-sm text-outline leading-tight">Lead Auditor</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Workspace Area -->
+<main class="flex-1 p-space-xl max-w-7xl w-full mx-auto flex flex-col gap-space-xl">
+<!-- ==================== DASHBOARD HEADER ==================== -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-sm border-b border-outline-variant/30">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-headline-lg font-headline-lg tracking-tight text-on-surface">Operations Overview</h1>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+              Live Syncing
+            </span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">Monitor incoming orders, verification activity and pending conflicts across all active outlets.</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="text-right hidden sm:block">
+<span class="text-mono-data-sm font-mono-data-sm text-outline block">Auto-reconciler interval: 15s</span>
+<span class="text-mono-data-sm font-mono-data-sm text-primary font-medium">Last processed: 4s ago</span>
+</div>
+<button class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md font-semibold hover:bg-primary-container shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="rule">rule</span>
+<span>Review Pending Conflicts (14)</span>
+</button>
+</div>
+</div>
+<!-- ==================== 4 KPI METRIC CARDS ==================== -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg flex flex-col justify-between hover:border-outline/50 transition-colors shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Source Orders Ingested</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-mono-data-sm bg-emerald-50 text-emerald-700 border border-emerald-200">+12.4% vs yday</span>
+</div>
+<div class="my-space-md">
+<span class="text-headline-xl font-headline-xl text-on-surface tracking-tight">1,842</span>
+<span class="text-label-sm font-label-sm text-outline ml-1">Today</span>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-mono-data-sm font-mono-data-sm text-outline">
+<span title="Zomato"><strong class="text-on-surface font-medium">840</strong> Zomato</span>
+<span>•</span>
+<span title="Swiggy"><strong class="text-on-surface font-medium">620</strong> Swiggy</span>
+<span>•</span>
+<span title="WhatsApp POS"><strong class="text-on-surface font-medium">382</strong> WA</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg flex flex-col justify-between hover:border-outline/50 transition-colors shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Canonical Master Orders</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="verified">verified</span>
+</div>
+<div class="my-space-md">
+<span class="text-headline-xl font-headline-xl text-on-surface tracking-tight">1,798</span>
+<span class="text-label-sm font-label-sm text-emerald-600 font-semibold ml-1">Verified</span>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-mono-data-sm font-mono-data-sm">
+<span class="text-on-surface-variant">Clean pass-through</span>
+<span class="text-emerald-700 font-medium">97.6%</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg flex flex-col justify-between hover:border-error/40 transition-colors shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-error font-medium">Pending Reviews</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-mono-data-sm bg-error/10 text-error border border-error/20 font-semibold">Action Required</span>
+</div>
+<div class="my-space-md">
+<span class="text-headline-xl font-headline-xl text-error tracking-tight">14</span>
+<span class="text-label-sm font-label-sm text-outline ml-1">Critical Conflicts</span>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-mono-data-sm font-mono-data-sm text-outline">
+<span><strong class="text-on-surface font-medium">8</strong> Qty</span>
+<span>•</span>
+<span><strong class="text-on-surface font-medium">4</strong> Mod</span>
+<span>•</span>
+<span><strong class="text-on-surface font-medium">2</strong> Addr</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg flex flex-col justify-between hover:border-outline/50 transition-colors shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Reconciliation Accuracy</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="speed">speed</span>
+</div>
+<div class="my-space-md">
+<span class="text-headline-xl font-headline-xl text-primary tracking-tight">99.82%</span>
+<span class="text-label-sm font-label-sm text-outline ml-1">Audit Score</span>
+</div>
+<div class="pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-mono-data-sm font-mono-data-sm">
+<span class="text-on-surface-variant">Avg resolution time</span>
+<span class="text-on-surface font-medium">42 seconds</span>
+</div>
+</div>
+</section>
+<!-- ==================== MAIN CONTENT GRID (TWO COLUMNS) ==================== -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- LEFT COLUMN (7 Cols): High-Priority Review Queue -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<!-- Table Header Strip -->
+<div class="p-space-lg border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">High-Priority Review Queue</h2>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-error/10 text-error font-semibold">14 waiting</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Urgent order discrepancies requiring manual verification or single-click AI matching.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Sort: Severity</span>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded border border-outline-variant/40">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Queue Items List -->
+<div class="divide-y divide-outline-variant/30">
+<!-- Item 1: Conflict #89241 -->
+<div class="p-space-lg hover:bg-surface-container-low/40 transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-8 h-8 rounded bg-error/10 text-error flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="production_quantity_limits">production_quantity_limits</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#89241</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-data-sm font-medium bg-red-50 text-red-700 border border-red-200">Quantity Mismatch</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">3m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+<span class="font-medium text-primary">Zomato</span> (2 rolls) vs <span class="font-medium text-emerald-700">WhatsApp POS</span> (3 rolls)
+                    </p>
+<div class="text-[12px] font-mono-data-sm text-outline mt-0.5">
+                      Item: Paneer Tikka Rolls • Delta: ₹180.00
+                    </div>
+</div>
+</div>
+<div class="flex sm:flex-col items-end justify-between w-full sm:w-auto gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono-data-sm bg-teal-50 text-primary border border-teal-200 px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    AI Match 94%
+                  </span>
+<button class="px-3 py-1 bg-primary text-on-primary hover:bg-primary-container text-label-sm font-label-sm rounded font-medium transition-colors">
+                    Review
+                  </button>
+</div>
+</div>
+<!-- Item 2: Conflict #89243 -->
+<div class="p-space-lg hover:bg-surface-container-low/40 transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-8 h-8 rounded bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#89243</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-data-sm font-medium bg-amber-50 text-amber-700 border border-amber-200">Address Duplicate</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">7m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+<span class="font-medium text-amber-800">Swiggy</span> vs <span class="font-medium text-slate-700">Direct Phone Call</span>
+</p>
+<div class="text-[12px] font-mono-data-sm text-outline mt-0.5">
+                      Butter Chicken Combo 2x • Same Delivery Destination
+                    </div>
+</div>
+</div>
+<div class="flex sm:flex-col items-end justify-between w-full sm:w-auto gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono-data-sm bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded">
+                    Potential Double-Bill
+                  </span>
+<button class="px-3 py-1 bg-primary text-on-primary hover:bg-primary-container text-label-sm font-label-sm rounded font-medium transition-colors">
+                    Review
+                  </button>
+</div>
+</div>
+<!-- Item 3: Conflict #89244 -->
+<div class="p-space-lg hover:bg-surface-container-low/40 transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-8 h-8 rounded bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#89244</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-data-sm font-medium bg-blue-50 text-blue-700 border border-blue-200">Modifier Clash</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">12m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+<span class="font-medium text-blue-800">Zomato Special Request</span> unmapped in Kitchen POS
+                    </p>
+<div class="text-[12px] font-mono-data-sm text-outline mt-0.5">
+                      Spicy Garlic Wings: "Extra dip, allergen no peanuts"
+                    </div>
+</div>
+</div>
+<div class="flex sm:flex-col items-end justify-between w-full sm:w-auto gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono-data-sm bg-teal-50 text-primary border border-teal-200 px-2 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    AI Match 98%
+                  </span>
+<button class="px-3 py-1 bg-primary text-on-primary hover:bg-primary-container text-label-sm font-label-sm rounded font-medium transition-colors">
+                    Review
+                  </button>
+</div>
+</div>
+<!-- Item 4: Conflict #89249 -->
+<div class="p-space-lg hover:bg-surface-container-low/40 transition-colors flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-8 h-8 rounded bg-red-50 text-red-700 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="price_change">price_change</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-mono-data-md text-mono-data-md font-semibold text-on-surface">#89249</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-mono-data-sm font-medium bg-red-50 text-red-700 border border-red-200">Tax Delta Mismatch</span>
+<span class="text-mono-data-sm font-mono-data-sm text-outline">19m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface mt-1">
+                      GST Calculation discrepancy (5% SGST + CGST vs 18% Aggregator default)
+                    </p>
+<div class="text-[12px] font-mono-data-sm text-outline mt-0.5">
+                      Order Total ₹840.00 • Difference: ₹14.20
+                    </div>
+</div>
+</div>
+<div class="flex sm:flex-col items-end justify-between w-full sm:w-auto gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 text-[11px] font-mono-data-sm bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded">
+                    Requires Override
+                  </span>
+<button class="px-3 py-1 bg-primary text-on-primary hover:bg-primary-container text-label-sm font-label-sm rounded font-medium transition-colors">
+                    Review
+                  </button>
+</div>
+</div>
+</div>
+<!-- Queue Footer Strip -->
+<div class="p-space-md bg-surface-container-low/30 border-t border-outline-variant/30 flex items-center justify-between text-mono-data-sm font-mono-data-sm text-outline">
+<span>Showing 4 of 14 unresolved conflicts</span>
+<a class="text-primary font-medium hover:underline flex items-center gap-1" href="#">
+                View all in Discrepancies <span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (5 Cols): Ingestion Stream Health & Breakdown -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Stream Health Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/30">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Channel Ingestion Streams</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Live gateway ping &amp; socket synchronization health</p>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-50"></span>
+</div>
+<div class="mt-space-md space-y-3">
+<!-- Channel 1 -->
+<div class="p-2.5 rounded-lg border border-outline-variant/30 bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-semibold">Zomato Partner API</div>
+<div class="text-[11px] font-mono-data-sm text-outline">Active Webhook (TCP Keepalive)</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-mono-data-sm font-mono-data-sm font-semibold text-emerald-700">38ms</span>
+<div class="text-[10px] font-mono-data-sm text-outline">0% packet drop</div>
+</div>
+</div>
+<!-- Channel 2 -->
+<div class="p-2.5 rounded-lg border border-outline-variant/30 bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-semibold">Swiggy Merchant Ingest</div>
+<div class="text-[11px] font-mono-data-sm text-outline">HTTP POST Dispatcher</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-mono-data-sm font-mono-data-sm font-semibold text-emerald-700">41ms</span>
+<div class="text-[10px] font-mono-data-sm text-outline">0.01% latency jitter</div>
+</div>
+</div>
+<!-- Channel 3 -->
+<div class="p-2.5 rounded-lg border border-outline-variant/30 bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-semibold">WhatsApp Cloud Gateway</div>
+<div class="text-[11px] font-mono-data-sm text-outline">Meta Graph API v19.0</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-mono-data-sm font-mono-data-sm font-semibold text-emerald-700">110ms</span>
+<div class="text-[10px] font-mono-data-sm text-outline">Healthy queue</div>
+</div>
+</div>
+<!-- Channel 4 -->
+<div class="p-2.5 rounded-lg border border-outline-variant/30 bg-surface flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-semibold">POS Direct Sync (On-premise)</div>
+<div class="text-[11px] font-mono-data-sm text-outline">LAN Daemon Socket #CP-04</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-mono-data-sm font-mono-data-sm font-semibold text-emerald-700">12ms</span>
+<div class="text-[10px] font-mono-data-sm text-outline">Zero delay</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Conflict Distribution Breakdown Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-space-lg shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<h3 class="text-headline-sm font-headline-sm text-on-surface pb-space-xs">Conflict Categorization (14 Total)</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-md">Current breakdown of pending audit exceptions</p>
+<!-- Custom Visual Progress Bar Segment -->
+<div class="w-full h-3 bg-surface-container-low rounded overflow-hidden flex mb-3">
+<div class="h-full bg-rose-500" style="width: 57.1%" title="Quantity Mismatches (8)"></div>
+<div class="h-full bg-amber-500" style="width: 28.5%" title="Modifiers &amp; Add-ons (4)"></div>
+<div class="h-full bg-blue-500" style="width: 14.4%" title="Address / Split Duplicates (2)"></div>
+</div>
+<!-- Legend Grid -->
+<div class="grid grid-cols-3 gap-2 text-center pt-2">
+<div class="p-2 rounded bg-surface border border-outline-variant/30">
+<div class="text-[11px] font-label-sm text-on-surface-variant">Quantity</div>
+<div class="text-headline-sm font-headline-sm text-on-surface font-semibold">8</div>
+<div class="text-[10px] font-mono-data-sm text-rose-600 font-medium">57.1%</div>
+</div>
+<div class="p-2 rounded bg-surface border border-outline-variant/30">
+<div class="text-[11px] font-label-sm text-on-surface-variant">Modifiers</div>
+<div class="text-headline-sm font-headline-sm text-on-surface font-semibold">4</div>
+<div class="text-[10px] font-mono-data-sm text-amber-600 font-medium">28.5%</div>
+</div>
+<div class="p-2 rounded bg-surface border border-outline-variant/30">
+<div class="text-[11px] font-label-sm text-on-surface-variant">Duplicates</div>
+<div class="text-headline-sm font-headline-sm text-on-surface font-semibold">2</div>
+<div class="text-[10px] font-mono-data-sm text-blue-600 font-medium">14.4%</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== BOTTOM SECTION: RECENT RECONCILIATION ACTIVITY ==================== -->
+<section class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.03)] mb-space-2xl">
+<div class="p-space-lg border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Recent Reconciliation Activity</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Real-time ledger of resolved discrepancies and immutable audit checkpoints.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-mono-data-sm font-mono-data-sm text-outline">Ledger Head: Block #10842</span>
+<button class="px-2.5 py-1 text-label-sm font-label-sm text-primary hover:bg-surface-container-low rounded border border-primary/20 transition-colors">
+              Filter by Operator
+            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface text-on-surface-variant text-label-sm font-label-sm border-b border-outline-variant/30 uppercase tracking-wider">
+<th class="py-2.5 px-space-lg font-semibold">Timestamp</th>
+<th class="py-2.5 px-space-lg font-semibold">Operator ID</th>
+<th class="py-2.5 px-space-lg font-semibold">Action Taken</th>
+<th class="py-2.5 px-space-lg font-semibold">Status / Target</th>
+<th class="py-2.5 px-space-lg font-semibold text-right">Audit Hash (SHA-256)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30 text-body-sm font-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-space-lg font-mono-data-sm text-outline whitespace-nowrap">
+                  14:48:12 IST
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="w-5 h-5 rounded-full bg-primary/10 text-primary text-[10px] flex items-center justify-center font-bold">AR</span>
+<span>Ananya Roy (Auditor)</span>
+</div>
+</td>
+<td class="py-3 px-space-lg font-medium text-on-surface">
+                  Approved WhatsApp Quantity override (+1 Paneer Roll)
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    Reconciled #89239
+                  </span>
+</td>
+<td class="py-3 px-space-lg text-right font-mono-data-sm text-outline whitespace-nowrap">
+<code class="px-1.5 py-0.5 bg-surface rounded text-[11px] border border-outline-variant/40">7f04…89b2</code>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-space-lg font-mono-data-sm text-outline whitespace-nowrap">
+                  14:42:05 IST
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-1.5 font-medium text-primary">
+<span class="w-5 h-5 rounded-full bg-teal-100 text-teal-800 text-[10px] flex items-center justify-center font-bold">AI</span>
+<span>AutoResolver Engine</span>
+</div>
+</td>
+<td class="py-3 px-space-lg font-medium text-on-surface">
+                  Flagged duplicate order refund on Zomato payload
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-amber-50 text-amber-700 border border-amber-200">
+                    Refund Queued
+                  </span>
+</td>
+<td class="py-3 px-space-lg text-right font-mono-data-sm text-outline whitespace-nowrap">
+<code class="px-1.5 py-0.5 bg-surface rounded text-[11px] border border-outline-variant/40">92a1…fc40</code>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-space-lg font-mono-data-sm text-outline whitespace-nowrap">
+                  14:37:50 IST
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-1.5 font-medium text-on-surface">
+<span class="w-5 h-5 rounded-full bg-slate-200 text-slate-800 text-[10px] flex items-center justify-center font-bold">VS</span>
+<span>Vikram S. (Shift Lead)</span>
+</div>
+</td>
+<td class="py-3 px-space-lg font-medium text-on-surface">
+                  Merged split billing between Swiggy Table #08 &amp; In-House POS
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    Settled ₹1,420
+                  </span>
+</td>
+<td class="py-3 px-space-lg text-right font-mono-data-sm text-outline whitespace-nowrap">
+<code class="px-1.5 py-0.5 bg-surface rounded text-[11px] border border-outline-variant/40">3b81…21aa</code>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-space-lg font-mono-data-sm text-outline whitespace-nowrap">
+                  14:31:18 IST
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<div class="flex items-center gap-1.5 font-medium text-primary">
+<span class="w-5 h-5 rounded-full bg-teal-100 text-teal-800 text-[10px] flex items-center justify-center font-bold">AI</span>
+<span>AutoResolver Engine</span>
+</div>
+</td>
+<td class="py-3 px-space-lg font-medium text-on-surface">
+                  Automapped Custom Dressing Modifier to Kitchen SKU #MOD-882
+                </td>
+<td class="py-3 px-space-lg whitespace-nowrap">
+<span class="px-2 py-0.5 rounded text-[11px] font-mono-data-sm bg-teal-50 text-primary border border-teal-200">
+                    Confidence 99.4%
+                  </span>
+</td>
+<td class="py-3 px-space-lg text-right font-mono-data-sm text-outline whitespace-nowrap">
+<code class="px-1.5 py-0.5 bg-surface rounded text-[11px] border border-outline-variant/40">cc94…0019</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</body></html>
