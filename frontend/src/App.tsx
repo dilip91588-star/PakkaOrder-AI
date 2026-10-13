@@ -10,39 +10,59 @@ import { ImportOrdersPage } from './pages/ImportOrdersPage';
 import { ProductCatalogPage } from './pages/ProductCatalogPage';
 import { AuditHistoryPage } from './pages/AuditHistoryPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { LandingPage } from './pages/LandingPage';
+import { LoginPage } from './pages/LoginPage';
+import { KitchenDisplayPage } from './pages/KitchenDisplayPage';
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <AppShell>
-        <Routes>
-          {/* Dashboard */}
-          <Route path="/" element={<DashboardPage />} />
+      <Routes>
+        {/* Public Marketing Landing Page */}
+        <Route path="/landing" element={<LandingPage />} />
 
-          {/* Orders */}
-          <Route path="/orders" element={<OrdersListPage />} />
-          <Route path="/orders/:id" element={<OrderDetailPage />} />
+        {/* Authentication & Outlet Switcher */}
+        <Route path="/login" element={<LoginPage />} />
 
-          {/* Review Queue & Side-by-Side Conflict Resolution */}
-          <Route path="/review" element={<ReviewQueuePage />} />
-          <Route path="/review/:id" element={<ConflictResolutionPage />} />
+        {/* Fullscreen Touch Kitchen Display System */}
+        <Route path="/kds" element={<KitchenDisplayPage />} />
 
-          {/* Imports (Text, CSV, Cashier Manual) */}
-          <Route path="/imports" element={<ImportOrdersPage />} />
+        {/* Core Operations Console (Wrapped in AppShell) */}
+        <Route
+          path="/*"
+          element={
+            <AppShell>
+              <Routes>
+                {/* Operations Overview Dashboard */}
+                <Route path="/" element={<DashboardPage />} />
 
-          {/* Product Catalog */}
-          <Route path="/catalog" element={<ProductCatalogPage />} />
+                {/* Orders Inbox & Detail */}
+                <Route path="/orders" element={<OrdersListPage />} />
+                <Route path="/orders/:id" element={<OrderDetailPage />} />
 
-          {/* Audit Ledger */}
-          <Route path="/audit" element={<AuditHistoryPage />} />
+                {/* Conflict Review Queue & Side-by-Side Resolution */}
+                <Route path="/review" element={<ReviewQueuePage />} />
+                <Route path="/review/:id" element={<ConflictResolutionPage />} />
 
-          {/* Console Settings */}
-          <Route path="/settings" element={<SettingsPage />} />
+                {/* AI Order Ingestion (Voice, Hinglish Text, CSV, POS) */}
+                <Route path="/imports" element={<ImportOrdersPage />} />
 
-          {/* Catch-all fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AppShell>
+                {/* Product Catalog & Normalization Mappings */}
+                <Route path="/catalog" element={<ProductCatalogPage />} />
+
+                {/* Immutable Audit History & Governance */}
+                <Route path="/audit" element={<AuditHistoryPage />} />
+
+                {/* Console Settings & Guardrails */}
+                <Route path="/settings" element={<SettingsPage />} />
+
+                {/* Catch-all fallback */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </AppShell>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 };

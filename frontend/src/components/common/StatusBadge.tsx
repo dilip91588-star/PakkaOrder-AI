@@ -10,12 +10,12 @@ interface StatusBadgeProps {
 }
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, severity, label, size = 'sm' }) => {
-  const sizeClasses = size === 'sm' ? 'px-2 py-0.5 text-xs' : 'px-2.5 py-1 text-sm font-medium';
+  const sizeClasses = size === 'sm' ? 'px-2.5 py-0.5 text-xs font-bold' : 'px-3 py-1 text-sm font-bold';
 
   if (severity === 'CRITICAL') {
     return (
-      <span className={`inline-flex items-center gap-1.5 rounded-full bg-status-critical-bg text-status-critical border border-status-critical/30 font-medium ${sizeClasses}`}>
-        <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+      <span className={`inline-flex items-center gap-1.5 rounded-full bg-red-50 text-red-800 border border-red-200 shadow-2xs ${sizeClasses}`}>
+        <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-red-600" />
         <span>{label || 'Critical Conflict'}</span>
       </span>
     );
@@ -23,8 +23,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, severity, labe
 
   if (severity === 'WARNING') {
     return (
-      <span className={`inline-flex items-center gap-1.5 rounded-full bg-status-warning-bg text-status-warning border border-status-warning/30 font-medium ${sizeClasses}`}>
-        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+      <span className={`inline-flex items-center gap-1.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 shadow-2xs ${sizeClasses}`}>
+        <AlertCircle className="w-3.5 h-3.5 shrink-0 text-amber-600" />
         <span>{label || 'Warning'}</span>
       </span>
     );
@@ -32,8 +32,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, severity, labe
 
   if (severity === 'INFO') {
     return (
-      <span className={`inline-flex items-center gap-1.5 rounded-full bg-accent-cyan-subtle text-accent-cyan border border-accent-cyan/30 font-medium ${sizeClasses}`}>
-        <Clock className="w-3.5 h-3.5 shrink-0" />
+      <span className={`inline-flex items-center gap-1.5 rounded-full bg-teal-50 text-primary border border-teal-200 shadow-2xs ${sizeClasses}`}>
+        <Clock className="w-3.5 h-3.5 shrink-0 text-primary" />
         <span>{label || 'Timing Match'}</span>
       </span>
     );
@@ -43,37 +43,39 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, severity, labe
   switch (status) {
     case 'CONFLICT_REVIEW':
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full bg-status-critical-bg text-status-critical border border-status-critical/30 font-medium ${sizeClasses}`}>
-          <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full bg-red-50 text-red-800 border border-red-200 shadow-2xs ${sizeClasses}`}>
+          <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-red-600" />
           <span>{label || 'Conflict Under Review'}</span>
         </span>
       );
     case 'MERGED_CANONICAL':
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full bg-accent-cyan-subtle text-accent-cyan border border-accent-cyan/30 font-medium ${sizeClasses}`}>
-          <ArrowRightLeft className="w-3.5 h-3.5 shrink-0" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full bg-teal-50 text-primary border border-teal-200 shadow-2xs ${sizeClasses}`}>
+          <ArrowRightLeft className="w-3.5 h-3.5 shrink-0 text-primary" />
           <span>{label || 'Merged Canonical (2 Sources)'}</span>
         </span>
       );
     case 'CANONICAL_CLEAN':
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full bg-status-success-bg text-status-success border border-status-success/30 font-medium ${sizeClasses}`}>
-          <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs ${sizeClasses}`}>
+          <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
           <span>{label || 'Single Source Clean'}</span>
         </span>
       );
     case 'MANUAL_LINKED':
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full bg-accent-teal/15 text-accent-teal border border-accent-teal/30 font-medium ${sizeClasses}`}>
-          <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full bg-teal-50 text-primary border border-teal-200 shadow-2xs ${sizeClasses}`}>
+          <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-primary" />
           <span>{label || 'Manual Linked'}</span>
         </span>
       );
     default:
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full bg-slate-800 text-slate-300 border border-border-crisp font-medium ${sizeClasses}`}>
+        <span className={`inline-flex items-center gap-1.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs ${sizeClasses}`}>
           <span>{label || status || 'Unknown'}</span>
         </span>
       );
   }
 };
+
+export default StatusBadge;

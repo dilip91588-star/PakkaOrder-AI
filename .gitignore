@@ -1,29 +1,56 @@
 # Dependencies
 node_modules/
+**/node_modules/
 .pnp
 .pnp.js
+
+# Environment variables and secrets (Strict Rule: never commit credentials)
+.env
+.env.*
+*.env
+!.env.example
+!**/.env.example
 
 # Production build artifacts
 dist/
 build/
+coverage/
+.vite/
 *.tsbuildinfo
-
-# Environment variables and secrets (Strict Rule: never commit credentials)
-.env
-.env.local
-.env.*.local
-*.env
+dist-ssr/
 
 # IDE and OS files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Logs and scratch
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-logs/
-*.log
+pnpm-debug.log*
+lerna-debug.log*
 scratch/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Local Database Files and Dumps
+*.sqlite
+*.sqlite3
+*.sql.gz
+
+# Local Uploads and Storage
+uploads/
+temp/
+tmp/

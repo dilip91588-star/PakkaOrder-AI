@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { getPool } from '../db/pool.js';
+import { env } from '../config/env.js';
 import type { 
   ActorType, 
   AuditAction, 
@@ -35,7 +36,7 @@ export class AuditRepository {
     
     // Generate HMAC-SHA256 signature to guarantee tamper-proof audit trail
     const payloadToSign = `${input.tenantId}:${input.entityType}:${input.entityId}:${input.action}:${JSON.stringify(input.afterState || {})}:${correlationId}`;
-    const hash = crypto.createHmac('sha256', 'pakka_audit_secret_key_v1').update(payloadToSign).digest('hex');
+    const hash = crypto.createHmac('sha256', env.AUDIT_SIGNING_SECRET).update(payloadToSign).digest('hex');
     const signature = `HMAC-SHA256: 0x${hash.slice(0, 16)}... (Verified)`;
 
     const now = new Date();

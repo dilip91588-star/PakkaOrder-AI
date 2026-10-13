@@ -49,7 +49,10 @@ const envSchema = z.object({
   WHATSAPP_VERIFY_TOKEN: z.string().default('pakka_wa_verify_token_dev'),
   WHATSAPP_APP_SECRET: z.string().optional(),
   WHATSAPP_PHONE_NUMBER_ID: z.string().optional(),
-  WHATSAPP_ACCESS_TOKEN: z.string().optional()
+  WHATSAPP_ACCESS_TOKEN: z.string().optional(),
+
+  // Audit Log Cryptographic Signing
+  AUDIT_SIGNING_SECRET: z.string().default('pakka_audit_secret_key_v1')
 });
 
 const parsedEnv = envSchema.safeParse(process.env);

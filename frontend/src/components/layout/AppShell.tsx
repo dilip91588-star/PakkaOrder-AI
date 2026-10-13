@@ -11,7 +11,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-surface-base text-on-surface">
+    <div className="flex h-screen w-screen overflow-hidden bg-[#f8f9ff] text-slate-900">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block h-full shrink-0">
         <Sidebar />
@@ -21,7 +21,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
           <div 
-            className="fixed inset-0 bg-black/70 backdrop-blur-xs" 
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs" 
             onClick={() => setMobileMenuOpen(false)}
           />
           <div className="relative z-50 w-64 h-full">
@@ -31,9 +31,9 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       )}
 
       {/* Main Workspace Rail */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
+      <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#f8f9ff]">
         <TopBar onOpenMobileMenu={() => setMobileMenuOpen(true)} />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-surface-base">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-[#f8f9ff] text-slate-900">
           <div className="max-w-7xl mx-auto space-y-6">
             {children || <Outlet />}
           </div>

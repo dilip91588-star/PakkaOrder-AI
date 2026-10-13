@@ -12,8 +12,11 @@
     "dev:backend": "npm run --prefix backend dev",
     "build:frontend": "npm run --prefix frontend build",
     "build:backend": "npm run --prefix backend build",
+    "typecheck:backend": "npm run --prefix backend typecheck",
+    "lint:frontend": "npm run --prefix frontend lint",
     "db:migrate": "npm run --prefix backend db:migrate",
     "db:seed": "npm run --prefix backend db:seed",
+    "test": "npm run --prefix backend test",
     "test:backend": "npm run --prefix backend test"
   }
 }
